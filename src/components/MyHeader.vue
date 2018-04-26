@@ -38,6 +38,7 @@
         display: inline;
         margin: 8px;
         & a {
+          padding-top: 2px;
           font-size: 1.2em;
           text-decoration: none;
           color: @vue-default-text;
