@@ -3,10 +3,17 @@
     <div class="text-section">
       <div class="text-section-title">Hi, I'm Graham</div>
       <div class="text-section-content">
-        I'm a final year student studying for a <strong>B.Sc. in Computer Applications</strong> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a>.
-        During the Summer of 2017, I spent <a href="https://coderdojo.com/news/2017/10/25/what-ive-learned-and-am-still-learning-at-the-coderdojo-foundation/" target="_blank">six months interning as a Software Engineer</a> with the <a href="https://coderdojo.com/foundation/" target="_blank">CoderDojo Foundation</a>
-        where I worked on improving <a href="http://zen.coderdojo.com" target="_blank">Zen, the CoderDojo Community Platform</a>.<br><br>
-        I'm an advocate of open source software and enjoy developing as a hobby as well as a career.
+        <div class="about-me__bio">
+          <div class="about-me__bio-image">
+            <img src="../assets/me.png" alt="A picture of me."></img>
+          </div>
+          <div class="about-me__bio-text">
+            "I'm a final year student studying for a <strong>B.Sc. in Computer Applications</strong> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a>.
+            During the Summer of 2017, I spent <a href="https://coderdojo.com/news/2017/10/25/what-ive-learned-and-am-still-learning-at-the-coderdojo-foundation/" target="_blank">six months interning as a Software Engineer</a> with the <a href="https://coderdojo.com/foundation/" target="_blank">CoderDojo Foundation</a>
+            where I worked on improving <a href="http://zen.coderdojo.com" target="_blank">Zen, the CoderDojo Community Platform</a>.<br><br>
+            I'm an advocate of open source software and enjoy developing as a hobby as well as a career."
+          </div>
+        </div>
       </div>
     </div>
     <external-profile-links></external-profile-links>
@@ -25,5 +32,12 @@
 </script>
 
 <style scoped lang="less">
-
+  .about-me {
+    &__bio {
+      display: flex;
+      &-text {
+        margin-left: 40px;
+      }
+    }
+  }
 </style>
