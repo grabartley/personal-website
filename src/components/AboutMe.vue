@@ -8,10 +8,10 @@
             <img src="../assets/me.png" alt="A picture of me."></img>
           </div>
           <div class="about-me__bio-text">
-            "I'm a final year student studying for a <strong>B.Sc. in Computer Applications</strong> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a>.
+            "I recently completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> which I studied for from 2014 to 2018.
             During the Summer of 2017, I spent <a href="https://coderdojo.com/news/2017/10/25/what-ive-learned-and-am-still-learning-at-the-coderdojo-foundation/" target="_blank">six months interning as a Software Engineer</a> with the <a href="https://coderdojo.com/foundation/" target="_blank">CoderDojo Foundation</a>
-            where I worked on improving <a href="http://zen.coderdojo.com" target="_blank">Zen, the CoderDojo Community Platform</a>.<br><br>
-            I'm an advocate of open source software and enjoy developing as a hobby as well as a career."
+            where I worked on improving <a href="http://zen.coderdojo.com" target="_blank">Zen, the CoderDojo Community Platform</a>."<br><br>
+            "I'm an advocate of open source software and in my professional life I strive to create high quality software solutions through respectful collaboration with others."
           </div>
         </div>
       </div>
@@ -36,7 +36,18 @@
     &__bio {
       display: flex;
       &-text {
-        margin-left: 40px;
+        margin-left: 45px;
+        font-style: italic;
+      }
+    }
+  }
+  @media only screen and (max-width: 1100px) {
+    .about-me {
+      &__bio {
+        flex-direction: column;
+        &-text {
+          margin: 45px 0 0 0;
+        }
       }
     }
   }

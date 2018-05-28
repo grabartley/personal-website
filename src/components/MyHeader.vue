@@ -5,7 +5,7 @@
       <li><router-link id="header-work" to="work">WORK</router-link></li>
     </ul>
     <h1 id="header-name">GRAHAM BARTLEY</h1>
-    <p id="header-desc">SOFTWARE ENGINEER | WEB DEVELOPER | FINAL YEAR STUDENT</p>
+    <p id="header-desc">GRADUATE OF B.SC. IN COMPUTER APPLICATIONS AT DCU</p>
   </header>
 </template>
 <script>
