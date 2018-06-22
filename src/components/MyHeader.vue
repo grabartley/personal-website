@@ -4,8 +4,8 @@
       <li><router-link id="header-about-me" to="/">ABOUT ME</router-link></li>
       <li><router-link id="header-work" to="work">WORK</router-link></li>
     </ul>
-    <h1 id="header-name">GRAHAM BARTLEY</h1>
-    <p id="header-desc">GRADUATE OF B.SC. IN COMPUTER APPLICATIONS AT DCU</p>
+    <h1 id="header-name">Graham Bartley</h1>
+    <p id="header-desc">Software Engineering Graduate | 1:1 B.Sc. (Hons.) in Computer Applications</p>
   </header>
 </template>
 <script>
@@ -22,12 +22,14 @@
     padding: 0 0 10% 0;
     &-name {
       font-size: 5em;
+      text-transform: uppercase;
       margin: 0;
       padding: 13% 0 0 0;
     }
     &-desc {
       font-size: 1.3em;
       font-weight: bold;
+      text-transform: uppercase;
     }
     &-nav-list {
       list-style-type: none;
