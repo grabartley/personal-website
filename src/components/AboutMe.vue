@@ -8,10 +8,8 @@
             <img src="../assets/me.png" alt="A picture of me."></img>
           </div>
           <div class="about-me__bio-text">
-            "I recently completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> with a first class honours result which I studied for at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> from 2014 to 2018.
-            During the Summer of 2017, I spent <a href="https://coderdojo.com/news/2017/10/25/what-ive-learned-and-am-still-learning-at-the-coderdojo-foundation/" target="_blank">six months interning as a Software Engineer</a> with the <a href="https://coderdojo.com/foundation/" target="_blank">CoderDojo Foundation</a>
-            where I worked on the full stack development of <a href="http://zen.coderdojo.com" target="_blank">Zen, the CoderDojo Community Platform</a>."<br><br>
-            "I'm an advocate of open source software and in my professional life I strive to create high quality software solutions through respectful collaboration with others."
+            "I recently completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> with a first class honours result which I studied for at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> from 2014 to 2018. Since then I have been working as a Full Stack Software Engineer with <a href="https://www.oath.com" target="_blank">Oath</a>.<br><br>
+            I am passionate about building high quality software solutions through respectful collaboration with others."
           </div>
         </div>
       </div>
