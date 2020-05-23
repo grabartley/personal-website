@@ -15,7 +15,7 @@
           <br><br><strong>- Castle Escape's description</strong>
           <br><br>
           <div class="download-links">
-            <a href="http://redbrick.dcu.ie/~dedoctor/download/castleescape.jar" download><img class="link-bubble" src="../assets/download-logo.png"></img></a>
+            <a href="https://github.com/grabartley/castle-escape-java/releases/download/v1.0.0/castleescape.jar" download><img class="link-bubble" src="../assets/download-logo.png"></img></a>
           </div>
       </div>
     </div>
