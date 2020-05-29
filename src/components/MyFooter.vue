@@ -1,6 +1,6 @@
 <template>
   <footer id="footer">
-    <p>© Graham Bartley 2018 - Hosted by <a href=" https://redbrick.dcu.ie/" target="_blank">Redbrick</a></p>
+    <p>Graham Bartley 2020 - Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
   </footer>
 </template>
 <script>
