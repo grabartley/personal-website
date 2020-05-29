@@ -45,6 +45,7 @@
     "husky": "^4.2.5",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "lint-staged": "^10.2.7",
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^2.0.0",
     "ora": "^1.2.0",
@@ -72,7 +73,10 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "./hooks/pre-commit"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint --cache --fix"
   }
 }
