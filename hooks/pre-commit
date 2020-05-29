@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo 'running pre-commit...'
+
+# Build the site to be deployed
+npm run build
+
+# Update the references in the built site
+echo 'updating built file references...'
+sed -i -e 's/href\=\//href\=/g' docs/index.html
+sed -i -e 's/src\=\//src\=/g' docs/index.html
+
+# Stage the built files for commit
+git add docs/*
+echo 'pre-commit success'
