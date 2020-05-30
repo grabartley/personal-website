@@ -1,8 +1,8 @@
 <template>
   <div class="external-profile-links">
-    <a href="https://ie.linkedin.com/pub/graham-bartley/ba/590/511" target="_blank"><img class="link-bubble" src="../assets/linkedin-logo.png"></img></a>
-    <a href="https://github.com/grabartley" target="_blank"><img class="link-bubble" src="../assets/github-logo.png"></img></a>
-    <a href="https://twitter.com/grahambartley" target="_blank"><img class="link-bubble" src="../assets/twitter-logo.png"></img></a>
+    <a href="https://ie.linkedin.com/pub/graham-bartley/ba/590/511" target="_blank"><img class="link-bubble" src="../assets/linkedin-logo.png"></a>
+    <a href="https://github.com/grabartley" target="_blank"><img class="link-bubble" src="../assets/github-logo.png"></a>
+    <a href="https://twitter.com/grahambartley" target="_blank"><img class="link-bubble" src="../assets/twitter-logo.png"></a>
   </div>
 </template>
 <script>

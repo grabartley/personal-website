@@ -5,7 +5,7 @@
       <div class="text-section-content">
         <div class="about-me__bio">
           <div class="about-me__bio-image">
-            <img src="../assets/me.png" alt="A picture of me."></img>
+            <img src="../assets/me.png" alt="A picture of me.">
           </div>
           <div class="about-me__bio-text">
             "I recently completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> with a first class honours result which I studied for at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> from 2014 to 2018. Since then I have been working as a Full Stack Software Engineer with <a href="https://www.linkedin.com/company/verizon-media/" target="_blank">Verizon Media</a>.<br><br>

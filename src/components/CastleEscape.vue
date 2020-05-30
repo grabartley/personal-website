@@ -7,7 +7,7 @@
           This was written after my second year of college and I have since re-written the game in Java.
           The <a href="https://github.com/grabartley/castle-escape-java" target="_blank">Java version</a> is <strong>available below</strong> and the source code for both can be found on my GitHub profile.
           <br><br>
-          <center><img src="../assets/castle-escape-logo.png" alt="The icon for Castle Escape"></img></center>
+          <center><img src="../assets/castle-escape-logo.png" alt="The icon for Castle Escape"></center>
           <br>
           <i>"The game begins in the old sewers of a castle and takes you on a journey through the castle's many twists and turns
           as you search for a way out while learning more and more about your surroundings.
@@ -15,7 +15,7 @@
           <br><br><strong>- Castle Escape's description</strong>
           <br><br>
           <div class="download-links">
-            <a href="https://github.com/grabartley/castle-escape-java/releases/download/v1.0.0/castleescape.jar" download><img class="link-bubble" src="../assets/download-logo.png"></img></a>
+            <a href="https://github.com/grabartley/castle-escape-java/releases/download/v1.0.0/castleescape.jar" download><img class="link-bubble" src="../assets/download-logo.png"></a>
           </div>
       </div>
     </div>

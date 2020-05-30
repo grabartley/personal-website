@@ -7,12 +7,12 @@
         It gives you <strong>greater control</strong> over your device by allowing you to explain <strong>simple logic</strong> in JavaScript
         which can be used to <strong>run tasks automatically</strong> in the background.
         <br><br>
-        <center><img src="../assets/scripter-logo.png"></img></center>
+        <center><img src="../assets/scripter-logo.png"></center>
         <br>
         For example, this short script could be used with Scripter to turn your device on silent mode when
         within 15 meters of the Googleplex building in California...
         <br><br>
-        <img id="example-script" src="../assets/scripter-example-script.png"></img>
+        <img id="example-script" src="../assets/scripter-example-script.png">
         <br><br>
         This is just one example of the many possible uses of Scripter! The <a href="https://github.com/grabartley/scripter" target="_blank">source code for Scripter</a> can now be found on my GitHub profile.
       </div>
