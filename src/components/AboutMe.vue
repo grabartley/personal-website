@@ -8,7 +8,7 @@
             <img src="../assets/me.png" alt="A picture of me.">
           </div>
           <div class="about-me__bio-text">
-            "I'm a Full Stack Software Engineer working at <a href="https://www.linkedin.com/company/verizon-media/" target="_blank">Verizon Media</a> since 2018. Before that I completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> with a first class honours result.<br><br>
+            "I'm a Full Stack Software Engineer working at <a href="https://www.linkedin.com/company/yahoo/" target="_blank">Yahoo</a> since 2018. Before that I completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> with a first class honours result.<br><br>
             I am passionate about building high quality software solutions through respectful collaboration with others."
           </div>
         </div>
@@ -33,6 +33,10 @@
   .about-me {
     &__bio {
       display: flex;
+      &-image img {
+        width: 365px;
+        height: 395px;
+      }
       &-text {
         margin-left: 45px;
         font-style: italic;
