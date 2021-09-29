@@ -11,7 +11,6 @@
 <style lang="less">
   @import "../common/colors";
   #footer {
-    padding: 1% 0 1% 0;
-    background-color: @secondary-green;
+    padding: 10% 0 1% 0;
   }
 </style>

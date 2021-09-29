@@ -1,0 +1,58 @@
+<template>
+  <div class="bio">
+    <div class="skew-11-neg">
+      <div class="text-section">
+        <div class="text-section-title">Hi, I'm Graham</div>
+        <div class="text-section-content">
+          <div class="bio__bio">
+            <div class="bio__bio-image">
+              <img src="../assets/me.png" alt="A picture of me.">
+            </div>
+            <div class="bio__bio-text">
+              "I'm a Full Stack Software Engineer working at <a href="https://www.linkedin.com/company/yahoo/" target="_blank">Yahoo</a> since 2018. Before that I completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> with a first class honours result.<br><br>
+              I am passionate about building high quality software solutions through respectful collaboration with others."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <external-profile-links></external-profile-links>
+  </div>
+</template>
+
+<script>
+  import ExternalProfileLinks from '@/components/ExternalProfileLinks';
+
+  export default {
+    name: 'bio',
+    components: {
+      'external-profile-links': ExternalProfileLinks,
+    },
+  };
+</script>
+
+<style scoped lang="less">
+  .bio {
+    &__bio {
+      display: flex;
+      &-image img {
+        width: 365px;
+        height: 395px;
+      }
+      &-text {
+        margin-left: 45px;
+        font-style: italic;
+      }
+    }
+  }
+  @media only screen and (max-width: 1100px) {
+    .bio {
+      &__bio {
+        flex-direction: column;
+        &-text {
+          margin: 45px 0 0 0;
+        }
+      }
+    }
+  }
+</style>

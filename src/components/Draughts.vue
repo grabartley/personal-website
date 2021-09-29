@@ -1,5 +1,5 @@
 <template>
-  <div class="draughts">
+  <div class="draughts skew-11-neg">
     <div class="text-section">
       <div class="text-section-title">Ancient Brain Draughts Game</div>
       <div class="text-section-content">
@@ -19,7 +19,7 @@
   @import "../common/colors";
 
   .draughts {
-    background-color: @secondary-green;
+    background-image: linear-gradient(45deg, @primary-green, @secondary-green);
     padding: 1% 0 1% 0;
   }
 </style>

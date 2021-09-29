@@ -1,5 +1,5 @@
 <template>
-  <div class="scripter">
+  <div class="scripter skew-11-neg">
     <div class="text-section">
       <div class="text-section-title">Scripter</div>
       <div class="text-section-content">
@@ -30,7 +30,7 @@
   @import "../common/colors";
 
   .scripter {
-    background-color: @secondary-green;
+    background-image: linear-gradient(45deg, @primary-green, @secondary-green);
     padding: 1% 0 1% 0;
   }
   #example-script {

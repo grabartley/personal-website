@@ -92,4 +92,11 @@
       opacity: 0;
     }
   }
+  // styling for skews (diagonals)
+  .skew-11-neg {
+    transform: skewY(-11deg);
+    & > div {
+      transform: skewY(11deg);
+    }
+  }
 </style>

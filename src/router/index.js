@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import AboutMe from '@/components/AboutMe';
+import Bio from '@/components/Bio';
 import Work from '@/components/Work';
 import NotFound from '@/components/NotFound';
 
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'About Me',
-      component: AboutMe,
+      name: 'Bio',
+      component: Bio,
     },
     {
       path: '/work',
