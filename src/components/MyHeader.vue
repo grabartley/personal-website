@@ -2,11 +2,12 @@
   <header id="header" class="skew-11-neg">
     <div id="header__content">
       <ul id="header__content-nav-list">
-        <li><router-link id="header__content-bio" to="/">BIO</router-link></li>
-        <li><router-link id="header__content-work" to="work">WORK</router-link></li>
+        <li><router-link id="header__content-bio" to="/">Bio</router-link></li>
+        <li><router-link id="header__content-academics" to="academics">Academics</router-link></li>
+        <li><router-link id="header__content-hobbies" to="hobbies">Hobbies</router-link></li>
       </ul>
       <h1 id="header__content-name">Graham Bartley</h1>
-      <p id="header__content-desc">Full Stack Software Engineer | 1:1 B.Sc. (Hons.) in Computer Applications</p>
+      <p id="header__content-desc">Full Stack Software Engineer | M.Sc. in Secure Software Engineering Student</p>
     </div>
   </header>
 </template>
@@ -39,6 +40,7 @@
         margin: 0;
         padding: 2.3% 3% 0 0;
         float: right;
+        text-transform: uppercase;
         & li {
           display: inline;
           margin: 8px;
@@ -47,7 +49,7 @@
             font-size: 1.2em;
             text-decoration: none;
             color: @vue-default-text;
-            transition: border-top 0.2s;
+            transition: border-top 150ms;
             &:hover {
               border-top: solid 3px;
             }

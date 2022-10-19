@@ -3,9 +3,10 @@
     <div class="text-section">
       <div class="text-section-title">Castle Escape</div>
       <div class="text-section-content">
-          I wrote an open source <strong>text-based adventure-puzzle game</strong> in C++ called <a href="https://github.com/grabartley/castle-escape" target="_blank">Castle Escape</a>!
-          This was written after my second year of college and I have since re-written the game in Java.
-          The <a href="https://github.com/grabartley/castle-escape-java" target="_blank">Java version</a> is <strong>available below</strong> and the source code for both can be found on my GitHub profile.
+          I wrote my first small open source <strong>text-based adventure-puzzle game</strong> in C++ called <a href="https://github.com/grabartley/castle-escape" target="_blank" rel="noreferrer nofollow">Castle Escape</a>!
+          This was written in my spare time after my second year of B.Sc. study and I have since re-written the game in Java.
+          Both versions are played on the terminal.
+          The <a href="https://github.com/grabartley/castle-escape-java" target="_blank" rel="noreferrer nofollow">Java version</a> is <strong>available below</strong> and the source code for both can be found on my GitHub profile.
           <br><br>
           <center><img src="../assets/castle-escape-logo.png" alt="The icon for Castle Escape"></center>
           <br>
@@ -15,7 +16,7 @@
           <br><br><strong>- Castle Escape's description</strong>
           <br><br>
           <div class="download-links">
-            <a href="https://github.com/grabartley/castle-escape-java/releases/download/v1.0.0/castleescape.jar" download><img class="link-bubble" src="../assets/download-logo.png"></a>
+            <a title="Download the Java version of Castle Escape" href="https://github.com/grabartley/castle-escape-java/releases/download/v1.0.0/castleescape.jar" download rel="noreferrer nofollow"><img class="link-bubble" src="../assets/download-logo.png"></a>
           </div>
       </div>
     </div>

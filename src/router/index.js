@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Bio from '@/components/Bio';
-import Work from '@/components/Work';
+import Academics from '@/components/Academics';
+import Hobbies from '@/components/Hobbies';
 import NotFound from '@/components/NotFound';
 
 Vue.use(Router);
@@ -15,9 +16,14 @@ export default new Router({
       component: Bio,
     },
     {
-      path: '/work',
-      name: 'Work',
-      component: Work,
+      path: '/academics',
+      name: 'Academics',
+      component: Academics,
+    },
+    {
+      path: '/hobbies',
+      name: 'Hobbies',
+      component: Hobbies,
     },
     {
       path: '*',
