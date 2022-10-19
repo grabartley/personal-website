@@ -5,7 +5,7 @@
         404
       </div>
       <div class="not-found__message-subtitle">
-        I seem to have misplaced this page...
+        No page to be found here.
       </div>
     </div>
   </div>

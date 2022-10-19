@@ -9,8 +9,9 @@
               <img src="../assets/me.png" alt="A picture of me.">
             </div>
             <div class="bio__bio-text">
-              "I'm a Full Stack Software Engineer working at <a href="https://www.linkedin.com/company/yahoo/" target="_blank">Yahoo</a> since 2018. Before that I completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank">B.Sc. in Computer Applications</a> at <a href="http://dcu.ie/" target="_blank">Dublin City University</a> with a first class honours result.<br><br>
-              I am passionate about building high quality software solutions through respectful collaboration with others."
+              "I'm a Full Stack Software Engineer working at <a href="https://www.linkedin.com/company/yahoo/" target="_blank" rel="noreferrer nofollow">Yahoo</a> since 2018. I'm also studying part-time for my <a href="https://www.dcu.ie/courses/postgraduate/school-computing/msc-computing-major-options" target="_blank" rel="noreferrer nofollow">M.Sc. in Computing majoring in Secure Software Engineering</a> at <a href="https://dcu.ie/" target="_blank" rel="noreferrer nofollow">Dublin City University</a> which I started in 2022. Before that I completed my <a href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml" target="_blank" rel="noreferrer nofollow">B.Sc. in Computer Applications</a> with a first class honours result in 2018.<br><br>
+              I am passionate about building high quality software solutions in agile teams.
+              I believe in life-long learning."
             </div>
           </div>
         </div>
@@ -36,8 +37,9 @@
     &__bio {
       display: flex;
       &-image img {
-        width: 365px;
-        height: 395px;
+        width: 300px;
+        height: 423px;
+        border-radius: 150px;
       }
       &-text {
         margin-left: 45px;

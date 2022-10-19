@@ -67,13 +67,14 @@
     margin-left: 2%;
     margin-right: 2%;
     border-style: solid;
-    border-radius: 10em;
+    border-radius: 100%;
     border-width: 17px;
     border-color: @primary-green;
-    transition: border-color 0.5s;
+    transition: border-color 250ms, transform 250ms;
 
     &:hover {
       border-color: @primary-purple;
+      transform: translateY(-10px);
     }
   }
   // styling for router-view fade

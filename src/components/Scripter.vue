@@ -3,7 +3,7 @@
     <div class="text-section">
       <div class="text-section-title">Scripter</div>
       <div class="text-section-content">
-        During my third year of college, I worked with a friend of mine to develop our <strong>first Android application</strong> named <a href="https://github.com/grabartley/scripter" target="_blank">Scripter</a>.
+        During my third year of studying for my B.Sc. at <a href="https://www.dcu.ie/" target="_blank" rel="noreferrer nofollow">DCU</a>, I worked with a friend of mine to develop our <strong>first Android application</strong> named <a href="https://github.com/grabartley/scripter" target="_blank" rel="noreferrer nofollow">Scripter</a>.
         It gives you <strong>greater control</strong> over your device by allowing you to explain <strong>simple logic</strong> in JavaScript
         which can be used to <strong>run tasks automatically</strong> in the background.
         <br><br>
@@ -14,7 +14,7 @@
         <br><br>
         <img id="example-script" src="../assets/scripter-example-script.png">
         <br><br>
-        This is just one example of the many possible uses of Scripter! The <a href="https://github.com/grabartley/scripter" target="_blank">source code for Scripter</a> can now be found on my GitHub profile.
+        This is just one example of the many possible uses of Scripter! The <a href="https://github.com/grabartley/scripter" target="_blank" rel="noreferrer nofollow">source code for Scripter</a> can now be found on my GitHub profile.
       </div>
     </div>
   </div>
