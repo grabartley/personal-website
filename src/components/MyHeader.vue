@@ -7,7 +7,7 @@
         <li><router-link id="header__content-hobbies" to="hobbies">Hobbies</router-link></li>
       </ul>
       <h1 id="header__content-name">Graham Bartley</h1>
-      <p id="header__content-desc">Full Stack Software Engineer | M.Sc. in Secure Software Engineering Student</p>
+      <p id="header__content-desc">Senior Software Engineer | Technical Lead | M.Sc. in Secure Software Engineering Student</p>
     </div>
   </header>
 </template>
