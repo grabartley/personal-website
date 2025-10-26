@@ -14,9 +14,13 @@
         1:1 M.Sc. (2024), 1:1 B.Sc. (2018) @ Dublin City University (DCU)
       </p>
     </div>
-    <div class="hero__scroll-indicator">
+    <button
+      class="hero__scroll-indicator"
+      @click="scrollToAbout"
+      aria-label="Scroll to About section"
+    >
       <div class="scroll-arrow" />
-    </div>
+    </button>
     <div class="hero__gradient" />
   </section>
 </template>
@@ -24,6 +28,14 @@
 <script>
 export default {
   name: 'Hero',
+  methods: {
+    scrollToAbout() {
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+  },
 };
 </script>
 
@@ -93,6 +105,15 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.hero__scroll-indicator:hover {
+  transform: translateX(-50%) translateY(5px);
 }
 
 .scroll-arrow {
@@ -102,6 +123,13 @@ export default {
   border-bottom: 3px solid white;
   transform: rotate(45deg);
   animation: bounce 2s infinite;
+  transition: all 0.2s ease;
+}
+
+.hero__scroll-indicator:hover .scroll-arrow {
+  border-color: var(--accent-primary);
+  width: 35px;
+  height: 35px;
 }
 
 @keyframes bounce {
