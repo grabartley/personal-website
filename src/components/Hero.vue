@@ -8,10 +8,10 @@
         Graham Bartley
       </h1>
       <p class="hero__title">
-        Senior Software Engineer | Technical Lead
+        Senior Software Engineer | AI Applications Squad Lead @ Yahoo
       </p>
       <p class="hero__subtitle">
-        M.Sc. in Secure Software Engineering Student
+        1:1 M.Sc. (2024), 1:1 B.Sc. (2018) @ Dublin City University (DCU)
       </p>
     </div>
     <div class="hero__scroll-indicator">
@@ -74,6 +74,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
+  border-radius: 2000px;
   background: 
     radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.3), transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.3), transparent 50%),
@@ -83,7 +84,7 @@ export default {
 
 @keyframes gradient-shift {
   0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.1) rotate(180deg); }
+  50% { transform: scale(2) rotate(180deg); }
 }
 
 .hero__scroll-indicator {
