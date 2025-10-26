@@ -19,35 +19,36 @@
         
         <div class="about__text">
           <p class="about__intro">
-            I'm a Senior Software Engineer working as a Technical Lead at 
+            I'm a Senior Software Engineer and Squad Lead at 
             <a
               href="https://www.linkedin.com/company/yahoo/"
               target="_blank"
               rel="noreferrer nofollow"
-            >Yahoo</a>. 
-            I'm also studying part-time for my 
+            >Yahoo</a>, 
+            delivering scalable, high-performance systems that are core to our advertising platform. 
+            I work across the stack with a focus on backend architecture, distributed systems, 
+            and building reliable, maintainable services in production.
+          </p>
+          
+          <p class="about__intro">
+            I hold a First Class Honours 
             <a
               href="https://www.dcu.ie/courses/postgraduate/school-computing/msc-computing-major-options"
               target="_blank"
               rel="noreferrer nofollow"
-            >M.Sc. in Secure Software Engineering</a> 
-            at <a
+            >M.Sc. in Computing</a> from 
+            <a
               href="https://dcu.ie/"
               target="_blank"
               rel="noreferrer nofollow"
-            >Dublin City University</a> which I started in 2022. 
-            Before starting at Yahoo, I completed my 
-            <a
-              href="https://www.dcu.ie/courses/undergraduate/computing/computer-applications.shtml"
-              target="_blank"
-              rel="noreferrer nofollow"
-            >B.Sc. in Computer Applications</a> 
-            with a first class honours result in 2018.
+            >Dublin City University</a> (2022-2024). 
+            My thesis on <em>The Impact of Verification Feedback on Code Correctness in LLM-Generated Dafny Programs</em> 
+            achieved the highest grade across all M.Sc. majors and was subsequently recognised by PwC's Best Practicum award.
           </p>
           
           <p class="about__passion">
-            I am passionate about building high quality software solutions in agile teams.
-            I believe in life-long learning.
+            I bring a pragmatic, delivery-focused mindset to solving complex, high-impact problems. 
+            I'm particularly interested in how recent advances in AI models can enhance software solutions when used safely and correctly.
           </p>
           
           <div class="about__links">
