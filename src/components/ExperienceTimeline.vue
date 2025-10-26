@@ -87,16 +87,16 @@ export default {
           description: 'Specialized in Secure Software Engineering. Thesis on LLM code verification achieved highest grade and PwC Best Practicum award.',
         },
         {
-          period: '2014 - 2018',
-          title: 'B.Sc. (Hons.) Computer Applications',
-          organization: 'Dublin City University',
-          description: 'First class honours, Software Engineering major',
-        },
-        {
           period: 'Apr 2017 - Sep 2017',
           title: 'Software Engineering Intern',
           organization: 'CoderDojo Foundation',
           description: 'Full stack development of the CoderDojo community platform (Zen)',
+        },
+        {
+          period: '2014 - 2018',
+          title: 'B.Sc. (Hons.) Computer Applications',
+          organization: 'Dublin City University',
+          description: 'First class honours, Software Engineering major',
         },
       ],
     };
