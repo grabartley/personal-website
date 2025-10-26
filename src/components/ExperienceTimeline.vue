@@ -52,9 +52,15 @@ export default {
         },
         {
           period: 'Apr 2023 - Dec 2023',
-          title: 'Software Dev Engineer II (Tech Lead)',
+          title: 'Software Dev Engineer II (Technical Lead)',
           organization: 'Yahoo',
           description: 'Leading technical initiatives and engineering teams',
+        },
+        {
+          period: '2022 - 2024',
+          title: '(1st) M.Sc. Computing',
+          organization: 'Dublin City University',
+          description: 'Secure Software Engineering major. Awarded best M.Sc. Computing Practicum by PwC across all majors (140+ students) in my year. Thesis: The Impact of Verification Feedback on Code Correctness in LLM-Generated Dafny Programs',
         },
         {
           period: 'Sep 2021 - Apr 2023',
@@ -81,12 +87,6 @@ export default {
           description: 'First role out of university, building full stack applications',
         },
         {
-          period: '2022 - 2024',
-          title: 'M.Sc. Computing (First Class Honours)',
-          organization: 'Dublin City University',
-          description: 'Specialized in Secure Software Engineering. Thesis on LLM code verification achieved highest grade and PwC Best Practicum award.',
-        },
-        {
           period: 'Apr 2017 - Sep 2017',
           title: 'Software Engineering Intern',
           organization: 'CoderDojo Foundation',
@@ -94,7 +94,7 @@ export default {
         },
         {
           period: '2014 - 2018',
-          title: 'B.Sc. (Hons.) Computer Applications',
+          title: '(1st) B.Sc. Computer Applications',
           organization: 'Dublin City University',
           description: 'First class honours, Software Engineering major',
         },

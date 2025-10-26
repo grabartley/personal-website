@@ -63,14 +63,6 @@ export default {
         github: 'https://github.com/grabartley/scripter',
       },
       {
-        id: 'draughts',
-        title: 'Ancient Brain Draughts',
-        description: '3D draughts game built with Three.js',
-        image: null,
-        tags: ['JavaScript', 'Three.js'],
-        github: null,
-      },
-      {
         id: 'castle-escape',
         title: 'Castle Escape',
         description: 'Text-based adventure puzzle game',
