@@ -1,21 +1,42 @@
 # personal-website
 
-My own personal website.
+My own personal website - a single-page application showcasing my experience, projects, and achievements.
 
-## Dev Setup :coffee:
+## Tech Stack
+
+- **Vue 3** - Progressive JavaScript framework
+- **Vue Router 4** - Official router for Vue.js
+- **Vite** - Next-generation frontend build tool
+- **Husky** - Git hooks for automated linting and building
+- **ESLint** - Code quality and style enforcement
+
+## Dev Setup
 
 ``` bash
 # install dependencies
-npm i
+npm install
 
-# start dev server with hot reload at localhost:8080
-npm start
+# start dev server with hot reload
+npm run dev
+
+# lint and fix files
+npm run lint
+
+# build for production
+npm run build
+
+# preview production build
+npm run preview
 ```
 
-## Deployment :rocket:
+## Deployment
 
-My website is built as a single page application and hosted using [GitHub Pages](https://pages.github.com). A pre-commit hook is used to build a minified version of the sources for deployment in the `docs` directory and [spa-github-pages](https://github.com/rafrex/spa-github-pages) is used to redirect routes beyond the base route back to `index.html` to let the Vue Router handle them correctly.
+The website is built as a single-page application and hosted using [GitHub Pages](https://pages.github.com).
 
-So, in order to deploy changes simply commit them and push/merge into  `master` and the rest will happen automatically.
+The deployment process is automated using Husky pre-commit hooks:
+1. On commit, `lint-staged` runs ESLint to check code quality
+2. The pre-commit hook builds a production version using Vite
+3. Built files are generated in the `docs` directory
+4. All changes are automatically staged and committed
 
-![pre-commit hook example](src/assets/pre-commit-example.png)
+To deploy changes, simply commit them and push/merge into `master` - the build and deployment happen automatically.
