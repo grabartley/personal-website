@@ -50,10 +50,6 @@
             I bring a pragmatic, delivery-focused mindset to solving complex, high-impact problems. 
             I'm particularly interested in how recent advances in AI models can enhance software solutions when used safely and correctly.
           </p>
-          
-          <div class="about__links">
-            <ExternalProfileLinks />
-          </div>
         </div>
       </div>
     </div>
@@ -61,13 +57,8 @@
 </template>
 
 <script>
-import ExternalProfileLinks from '@/components/ExternalProfileLinks.vue';
-
 export default {
-  name: 'About',
-  components: {
-    ExternalProfileLinks,
-  },
+  name: 'About'
 };
 </script>
 

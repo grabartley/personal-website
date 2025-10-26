@@ -16,8 +16,8 @@
     </div>
     <button
       class="hero__scroll-indicator"
-      @click="scrollToAbout"
       aria-label="Scroll to About section"
+      @click="scrollToAbout"
     >
       <div class="scroll-arrow" />
     </button>
