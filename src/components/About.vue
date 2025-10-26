@@ -21,7 +21,7 @@
           <p class="about__intro">
             I'm a Senior Software Engineer and Squad Lead at 
             <a
-              href="https://www.linkedin.com/company/yahoo/"
+              href="https://www.yahooinc.com/"
               target="_blank"
               rel="noreferrer nofollow"
             >Yahoo</a>, 
