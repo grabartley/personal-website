@@ -1,0 +1,26 @@
+#!/bin/sh
+
+echo "Running pre-commit hook..."
+
+# Run linter
+echo "Running linter..."
+npm run lint
+if [ $? -ne 0 ]; then
+  echo "Linter failed. Please fix errors before committing."
+  exit 1
+fi
+
+# Run build
+echo "Running build..."
+npm run build
+if [ $? -ne 0 ]; then
+  echo "Build failed. Please fix errors before committing."
+  exit 1
+fi
+
+# Add any changes from linter/build to the current commit
+echo "Adding any changes..."
+git add -u
+
+echo "Pre-commit hook completed successfully."
+exit 0
