@@ -81,7 +81,7 @@
           </button>
           <img
             :src="getImagePath(selectedImage)"
-            :alt="selectedImage"
+            :alt="selectedImage?.filename || 'Highlight image'"
             class="modal-image"
           >
         </div>
@@ -91,24 +91,17 @@
 </template>
 
 <script>
+const imageModules = import.meta.glob('../assets/highlights/*', { eager: true });
+const images = Object.entries(imageModules).map(([path, module]) => ({
+  filename: path.split('/').pop(),
+  url: module.default,
+}));
+
 export default {
   name: 'Highlights',
   data() {
     return {
-      images: [
-        'msc-grad-1.JPG',
-        'msc-grad-2.jpg',
-        'bsc-grad-1.JPG',
-        'bsc-grad-2.JPG',
-        'pwc-award.png',
-        'pwc-cert.jpg',
-        'coderdojo-team-1.jpg',
-        'coderdojo-team-2.jpg',
-        'dts-1.jpg',
-        'dts-2.JPG',
-        'dts-3.jpg',
-        'digimarcon-1.jpg',
-      ],
+      images,
       selectedImage: null,
       isModalOpen: false,
     };
@@ -143,16 +136,11 @@ export default {
       }
       return shuffled;
     },
-    getImagePath(imageName) {
-      try {
-        return new URL(`../assets/${imageName}`, import.meta.url).href;
-      } catch (e) {
-        console.warn(`Image not found: ${imageName}`);
-        return '';
-      }
+    getImagePath(image) {
+      return image?.url || '';
     },
-    openModal(imageName) {
-      this.selectedImage = imageName;
+    openModal(image) {
+      this.selectedImage = image;
       this.isModalOpen = true;
       // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden';
