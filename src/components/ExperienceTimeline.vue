@@ -48,7 +48,7 @@ export default {
           period: 'Jan 2024 - Present',
           title: 'Senior Software Engineer (Squad Lead)',
           organization: 'Yahoo',
-          description: 'I am currently leading a feature squad within Yahoo\'s Ads Engineering division delivering reliable and performant solutions at scale for Yahoo\'s core Ad business. I am a full stack engineer with my experience being equal parts frontend and backend focused',
+          description: 'I am currently leading a feature squad within Yahoo\'s Ads Engineering division delivering reliable and performant AI application solutions at scale for Yahoo\'s core Ad business',
         },
         {
           period: 'Apr 2023 - Dec 2023',
@@ -60,7 +60,7 @@ export default {
           period: '2022 - 2024',
           title: '(1st) M.Sc. Computing',
           organization: 'Dublin City University',
-          description: 'Secure Software Engineering major. Awarded best M.Sc. Computing Practicum by PwC across all majors (140+ students) in my year. Thesis: The Impact of Verification Feedback on Code Correctness in LLM-Generated Dafny Programs',
+          description: 'First class honours Master\'s degree in Computing with major in Secure Software Engineering. Awarded best M.Sc. Computing Practicum by PwC across all majors (140+ students) in my year. Thesis: The Impact of Verification Feedback on Code Correctness in LLM-Generated Dafny Programs',
         },
         {
           period: 'Sep 2021 - Apr 2023',
@@ -96,7 +96,7 @@ export default {
           period: '2014 - 2018',
           title: '(1st) B.Sc. Computer Applications',
           organization: 'Dublin City University',
-          description: 'First class honours, Software Engineering major',
+          description: 'First class honours Bachelor\'s degree in Software Engineering',
         },
       ],
     };
