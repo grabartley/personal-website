@@ -99,7 +99,7 @@ export default {
     radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.5), transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.5), transparent 50%),
     radial-gradient(circle at 40% 20%, rgba(79, 70, 229, 0.4), transparent 50%);
-  animation: gradient-shift 15s ease infinite;
+  animation: gradient-shift 10s ease infinite;
 }
 
 [data-theme="dark"] .hero__gradient {
