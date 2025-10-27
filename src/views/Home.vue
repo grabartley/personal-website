@@ -4,7 +4,7 @@
     <About />
     <ExperienceTimeline />
     <HonoursAwards />
-    <ProjectsSection />
+    <!-- <ProjectsSection /> -->
     <Contact />
     <Navigation />
   </div>
@@ -15,7 +15,7 @@ import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
 import ExperienceTimeline from '@/components/ExperienceTimeline.vue';
 import HonoursAwards from '@/components/HonoursAwards.vue';
-import ProjectsSection from '@/components/ProjectsSection.vue';
+// import ProjectsSection from '@/components/ProjectsSection.vue';
 import Contact from '@/components/Contact.vue';
 import Navigation from '@/components/Navigation.vue';
 
@@ -26,7 +26,7 @@ export default {
     About,
     ExperienceTimeline,
     HonoursAwards,
-    ProjectsSection,
+    // ProjectsSection,
     Contact,
     Navigation,
   },

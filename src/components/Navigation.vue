@@ -22,11 +22,11 @@
             Honours
           </button>
         </li>
-        <li>
+        <!-- <li>
           <button @click="scrollTo('projects')">
             Projects
           </button>
-        </li>
+        </li> -->
         <li>
           <button @click="scrollTo('contact')">
             Contact
@@ -62,9 +62,9 @@
         <button @click="scrollTo('honours') && (mobileMenuOpen = false)">
           Honours
         </button>
-        <button @click="scrollTo('projects') && (mobileMenuOpen = false)">
+        <!-- <button @click="scrollTo('projects') && (mobileMenuOpen = false)">
           Projects
-        </button>
+        </button> -->
         <button @click="scrollTo('contact') && (mobileMenuOpen = false)">
           Contact
         </button>
