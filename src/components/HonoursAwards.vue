@@ -12,9 +12,9 @@
         <div
           v-for="award in awards"
           :key="award.title"
-          class="honor-card glass"
+          class="honour-card glass"
         >
-          <div class="honor-card__icon">
+          <div class="honour-card__icon">
             <svg
               fill="none"
               stroke="currentColor"
@@ -28,19 +28,19 @@
               />
             </svg>
           </div>
-          <h3 class="honor-card__title">
+          <h3 class="honour-card__title">
             {{ award.title }}
           </h3>
-          <p class="honor-card__organization">
+          <p class="honour-card__organization">
             {{ award.organization }}
           </p>
           <p
             v-if="award.description"
-            class="honor-card__description"
+            class="honour-card__description"
           >
             {{ award.description }}
           </p>
-          <div class="honor-card__date">
+          <div class="honour-card__date">
             {{ award.date }}
           </div>
         </div>
@@ -122,7 +122,7 @@ export default {
   margin: 0 auto;
 }
 
-.honor-card {
+.honour-card {
   flex: 0 0 300px;
   padding: 2rem;
   background: var(--bg-glass);
@@ -136,13 +136,13 @@ export default {
   animation-fill-mode: both;
 }
 
-.honor-card:hover {
+.honour-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-xl);
   border-color: var(--accent-primary);
 }
 
-.honor-card__icon {
+.honour-card__icon {
   width: 60px;
   height: 60px;
   margin: 0 auto 1rem;
@@ -154,40 +154,40 @@ export default {
   color: white;
 }
 
-.honor-card__icon svg {
+.honour-card__icon svg {
   width: 30px;
   height: 30px;
 }
 
-.honor-card__title {
+.honour-card__title {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
-.honor-card__organization {
+.honour-card__organization {
   font-size: 1rem;
   color: var(--accent-secondary);
   font-weight: 600;
   margin-bottom: 0.75rem;
 }
 
-.honor-card__description {
+.honour-card__description {
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
 }
 
-.honor-card__date {
+.honour-card__date {
   font-size: 0.875rem;
   color: var(--text-secondary);
   font-weight: 500;
 }
 
 @media (max-width: 968px) {
-  .honor-card {
+  .honour-card {
     flex: 0 0 calc(50% - 1rem);
     min-width: 280px;
   }
@@ -198,7 +198,7 @@ export default {
     padding: 4rem 1rem;
   }
   
-  .honor-card {
+  .honour-card {
     flex: 0 0 100%;
     max-width: 100%;
   }
