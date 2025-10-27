@@ -4,12 +4,7 @@
     :class="{ 'nav--scrolled': scrolled }"
   >
     <div class="nav__content">
-      <button 
-        class="nav__logo"
-        @click="scrollTo('hero')"
-      >
-        GB
-      </button>
+      <span class="nav__logo" />
       
       <ul class="nav__links">
         <li>

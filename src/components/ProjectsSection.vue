@@ -52,7 +52,7 @@ export default {
         description: 'Open-source education platform for teaching coding to young people',
         image: coderdojoLogo,
         tags: ['Vue.js', 'AngularJS', 'Node.js', 'SenecaJS'],
-        github: 'https://github.com/CoderDojo',
+        github: ['https://github.com/CoderDojo'],
       },
       {
         id: 'scripter',
@@ -60,7 +60,7 @@ export default {
         description: 'Android automation app for background task execution',
         image: scripterLogo,
         tags: ['Android', 'JavaScript', 'Java'],
-        github: 'https://github.com/grabartley/scripter',
+        github: ['https://github.com/grabartley/scripter'],
       },
       {
         id: 'castle-escape',
@@ -68,7 +68,7 @@ export default {
         description: 'Text-based adventure puzzle game',
         image: castleLogo,
         tags: ['C++', 'Java'],
-        github: 'https://github.com/grabartley/castle-escape',
+        github: ['https://github.com/grabartley/castle-escape', 'https://github.com/grabartley/castle-escape-java'],
       },
     ];
     

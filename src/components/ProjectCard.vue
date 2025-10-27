@@ -76,13 +76,16 @@ export default {
   width: 100%;
   height: 200px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
 }
 
 .project-card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 80%;
+  height: 80%;
+  object-fit: scale-down;
   transition: transform 0.3s ease;
 }
 

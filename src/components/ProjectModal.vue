@@ -74,27 +74,30 @@
           </span>
         </div>
         
-        <div
-          v-if="projectData.github"
-          class="modal__links"
-        >
-          <a 
-            :href="projectData.github" 
-            target="_blank" 
-            rel="noreferrer nofollow"
-            class="modal__link glass"
+        <div class="modal__links">
+          <span
+            v-for="github in projectData.github"
+            :key="github"
+            class="modal__links"
           >
-            <svg
-              class="modal__link-icon"
-              fill="currentColor"
-              viewBox="0 0 24 24"
+            <a 
+              :href="github" 
+              target="_blank" 
+              rel="noreferrer nofollow"
+              class="modal__link glass"
             >
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-              />
-            </svg>
-            View on GitHub
-          </a>
+              <svg
+                class="modal__link-icon"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+              View on GitHub
+            </a>
+          </span>
         </div>
       </div>
     </div>
@@ -102,10 +105,7 @@
 </template>
 
 <script>
-import coderdojoLogo from '@/assets/coderdojo-zen-logo.png';
-import scripterLogo from '@/assets/scripter-logo.png';
 import scripterExample from '@/assets/scripter-example-script.png';
-import castleLogo from '@/assets/castle-escape-logo.png';
 import zenVideo from '@/assets/ca400-video-walkthrough.mp4';
 
 export default {
@@ -126,25 +126,30 @@ export default {
       };
     },
   },
+  mounted() {
+    window.addEventListener('keydown', this.handleEscape);
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleEscape);
+  },
   methods: {
+    handleEscape(event) {
+      if (event.key === 'Escape') {
+        this.$emit('close');
+      }
+    },
     getProjectDetails(projectId) {
       const details = {
         zen: {
           longDescription: 'During my internship with the CoderDojo Foundation I developed new features and pages for Zen. I mainly worked on the new front-end which was partly redesigned and rewritten using the VueJS framework while I was there but I also worked on the older front-end using Angular 1 and the back-end microservices using NodeJS and SenecaJS. This work led to me wanting to continue contributing to the development of Zen which I was able to do through my final year project at DCU. This individual project focused on the design, testing and implementation of a coding project creation, management and interaction solution for Zen which allows CoderDojo Ninjas to upload, share and interact with coding projects directly through Zen.',
           video: zenVideo,
-          images: [coderdojoLogo],
         },
         scripter: {
           longDescription: 'Developed with a friend during my third year at DCU, Scripter is my first Android application. It gives you greater control over your device by allowing you to explain simple logic in JavaScript which can be used to run tasks automatically in the background.',
-          images: [scripterLogo, scripterExample],
-        },
-        draughts: {
-          longDescription: 'Created as part of my B.Sc. studies at DCU using JavaScript with the Three.js library. I wrote this as a submission to a website created by Dr. Mark Humphrys called Ancient Brain which allows people to share coding projects in the form of "Worlds" and "Minds".',
-          images: [],
+          images: [scripterExample],
         },
         'castle-escape': {
           longDescription: 'My first open source text-based adventure-puzzle game written in C++ and later rewritten in Java. The game begins in the old sewers of a castle and takes you on a journey through the castle\'s many twists and turns as you search for a way out while learning more and more about your surroundings. You can collect useful items along the way which may help you to escape and uncover more of the castle.',
-          images: [castleLogo],
         },
       };
       
@@ -264,10 +269,12 @@ export default {
   display: grid;
   gap: 1rem;
   margin-bottom: 2rem;
+  align-content: center;
+  justify-items: center;
 }
 
 .modal__image {
-  width: 100%;
+  width: 80%;
   border-radius: 12px;
   box-shadow: var(--shadow-md);
 }
