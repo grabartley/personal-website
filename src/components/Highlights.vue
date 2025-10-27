@@ -372,7 +372,7 @@ export default {
 
 .modal-close {
   position: absolute;
-  top: -3rem;
+  top: -3.5rem;
   right: 0;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
