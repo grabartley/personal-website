@@ -1,34 +1,21 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Bio from '@/components/Bio';
-import Academics from '@/components/Academics';
-import Hobbies from '@/components/Hobbies';
-import NotFound from '@/components/NotFound';
+import { createRouter, createWebHistory } from 'vue-router';
+import Home from '@/views/Home.vue';
+import NotFound from '@/components/NotFound.vue';
 
-Vue.use(Router);
-
-export default new Router({
-  mode: 'history',
+const router = createRouter({
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
-      name: 'Bio',
-      component: Bio,
+      name: 'Home',
+      component: Home,
     },
     {
-      path: '/academics',
-      name: 'Academics',
-      component: Academics,
-    },
-    {
-      path: '/hobbies',
-      name: 'Hobbies',
-      component: Hobbies,
-    },
-    {
-      path: '*',
+      path: '/:pathMatch(.*)*',
       name: 'NotFound',
       component: NotFound,
     },
   ],
 });
+
+export default router;

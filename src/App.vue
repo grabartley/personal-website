@@ -1,103 +1,133 @@
 <template>
   <div id="app">
-    <my-header></my-header>
-    <transition name="fade">
-      <router-view></router-view>
-    </transition>
-    <my-footer></my-footer>
+    <router-view />
   </div>
 </template>
 
 <script>
-  import MyHeader from '@/components/MyHeader';
-  import MyFooter from '@/components/MyFooter';
-
-  export default {
-    name: 'app',
-    components: {
-      'my-header': MyHeader,
-      'my-footer': MyFooter,
-    },
-  };
+export default {
+  name: 'App',
+};
 </script>
 
-<style lang="less">
-  @import "./common/colors";
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  html, body {
-    margin: 0;
-    height: 100%;
-    background-color: @white-green;
-    color: @vue-default-text;
-  }
-  a {
-    text-decoration: none;
-    color: @link-green;
-    transition: color 0.3s;
-    &:hover {
-      color: @primary-purple;
-    }
-  }
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-  }
-  .router-link-exact-active {
-    border-top: solid 3px;
-  }
-  .text-section {
-    margin-top: 10%;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-bottom: 10%;
-    &-title {
-      font-size: 2.5em;
-      font-weight: bold;
-      padding: 0 0 5% 0;
-    }
-    &-content {
-      font-size: 1.6em;
-      line-height: 40px;
-    }
-  }
-  .link-bubble {
-    width: 230px;
-    margin-left: 2%;
-    margin-right: 2%;
-    border-style: solid;
-    border-radius: 100%;
-    border-width: 17px;
-    border-color: @primary-green;
-    transition: border-color 250ms, transform 250ms;
+:root {
+  /* Light theme colors */
+  --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-secondary: #f8fafc;
+  --bg-glass: rgba(255, 255, 255, 0.7);
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --accent-primary: #6366f1;
+  --accent-secondary: #8b5cf6;
+  --border-color: rgba(99, 102, 241, 0.2);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 30px -5px rgba(0, 0, 0, 0.25);
+}
 
-    &:hover {
-      border-color: @primary-purple;
-      transform: translateY(-10px);
-    }
+[data-theme="dark"] {
+  --bg-primary: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --bg-secondary: #0f172a;
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-primary: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    --bg-secondary: #0f172a;
+    --bg-glass: rgba(255, 255, 255, 0.05);
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --border-color: rgba(255, 255, 255, 0.1);
   }
-  // styling for router-view fade
-  .fade {
-    &-enter {
-      opacity: 0;
-      &-active {
-        transition-property: opacity;
-        transition-duration: .15s;
-        transition-delay: .15s;
-      }
-    }
-    &-leave-active {
-      transition-property: opacity;
-      transition-duration: .15s;
-      opacity: 0;
-    }
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  // styling for skews (diagonals)
-  .skew-11-neg {
-    transform: skewY(-11deg);
-    & > div {
-      transform: skewY(11deg);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Glass effect utility */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 </style>
