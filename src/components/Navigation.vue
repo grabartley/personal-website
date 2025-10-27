@@ -37,14 +37,15 @@
         </li>
       </ul>
       
-      <button 
+      <button
         class="nav__mobile-toggle"
+        :class="{ 'nav__mobile-toggle--open': mobileMenuOpen }"
         :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
         @click="mobileMenuOpen = !mobileMenuOpen"
       >
-        <span />
-        <span />
-        <span />
+        <span class="nav__mobile-toggle-line" />
+        <span class="nav__mobile-toggle-line" />
+        <span class="nav__mobile-toggle-line" />
       </button>
     </div>
     
@@ -213,19 +214,44 @@ export default {
   display: none;
   flex-direction: column;
   gap: 6px;
-  background: none;
-  border: none;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
 }
 
-.nav__mobile-toggle span {
+.nav__mobile-toggle:hover {
+  background: var(--bg-secondary);
+  transform: scale(1.05);
+}
+
+.nav__mobile-toggle:active {
+  transform: scale(0.95);
+}
+
+.nav__mobile-toggle-line {
   display: block;
   width: 25px;
   height: 3px;
   background: var(--text-primary);
   border-radius: 3px;
   transition: all 0.3s ease;
+}
+
+.nav__mobile-toggle--open .nav__mobile-toggle-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav__mobile-toggle--open .nav__mobile-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+
+.nav__mobile-toggle--open .nav__mobile-toggle-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .nav__mobile-menu {
@@ -281,12 +307,15 @@ export default {
   .nav__links {
     display: none;
   }
-  
-  .nav__mobile-toggle,
+
+  .nav__mobile-toggle {
+    display: flex;
+  }
+
   .nav__mobile-menu {
     display: block;
   }
-  
+
   .nav {
     padding: 1rem;
   }
