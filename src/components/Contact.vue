@@ -53,7 +53,7 @@
       </div>
       
       <footer class="contact__footer">
-        <p>&copy; {{ currentYear }} Graham Bartley</p>
+        <p>Graham Bartley {{ currentYear }}</p>
         <p class="contact__footer-small">
           Hosted by <a
             href="https://pages.github.com/"
@@ -82,6 +82,10 @@ export default {
   padding: 6rem 2rem 4rem;
   background: linear-gradient(to bottom, var(--bg-secondary), #000);
   color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .contact {
+  background: linear-gradient(to bottom, var(--bg-secondary), var(--accent-primary));
 }
 
 .contact__container {
@@ -124,7 +128,7 @@ export default {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
   font-size: 1.125rem;
   font-weight: 500;
