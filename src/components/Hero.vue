@@ -42,8 +42,8 @@ export default {
 <style scoped>
 .hero {
   position: relative;
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +77,7 @@ export default {
 }
 
 [data-theme="light"] .hero__name {
-  color: #1e293b;
+  color: #161925;
 }
 
 .hero__title {
