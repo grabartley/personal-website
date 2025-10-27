@@ -102,12 +102,13 @@ export default {
 
 .hero__gradient {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 2000px;
-  background: 
+  top: 50%;
+  left: 50%;
+  width: min(100vh, 100vw);
+  height: min(100vh, 100vw);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
     radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.5), transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.5), transparent 50%),
     radial-gradient(circle at 40% 20%, rgba(79, 70, 229, 0.4), transparent 50%);
@@ -129,8 +130,8 @@ export default {
 }
 
 @keyframes gradient-shift {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(2) rotate(180deg); }
+  0%, 100% { transform: translate(-50%, -50%) scale(1.5) rotate(0deg); }
+  50% { transform: translate(-50%, -50%) scale(2.3) rotate(180deg); }
 }
 
 .hero__scroll-indicator {
