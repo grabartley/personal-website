@@ -4,7 +4,7 @@
     <About />
     <ExperienceTimeline />
     <HonoursAwards />
-    <Highlights />
+    <Highlights v-if="isDesktop" />
     <!-- <ProjectsSection /> -->
     <Contact />
     <Navigation />
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { ref, onMounted, onUnmounted } from 'vue';
 import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
 import ExperienceTimeline from '@/components/ExperienceTimeline.vue';
@@ -32,6 +33,25 @@ export default {
     // ProjectsSection,
     Contact,
     Navigation,
+  },
+  setup() {
+    const isDesktop = ref(window.innerWidth > 768);
+
+    const handleResize = () => {
+      isDesktop.value = window.innerWidth > 768;
+    };
+
+    onMounted(() => {
+      window.addEventListener('resize', handleResize);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('resize', handleResize);
+    });
+
+    return {
+      isDesktop,
+    };
   },
 };
 </script>

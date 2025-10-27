@@ -27,7 +27,7 @@
             Projects
           </button>
         </li> -->
-        <li>
+        <li v-if="isDesktop">
           <button @click="scrollTo('highlights')">
             Highlights
           </button>
@@ -71,7 +71,10 @@
         <!-- <button @click="scrollTo('projects') && (mobileMenuOpen = false)">
           Projects
         </button> -->
-        <button @click="scrollTo('highlights') && (mobileMenuOpen = false)">
+        <button
+          v-if="isDesktop"
+          @click="scrollTo('highlights') && (mobileMenuOpen = false)"
+        >
           Highlights
         </button>
         <button @click="scrollTo('contact') && (mobileMenuOpen = false)">
@@ -97,9 +100,14 @@ export default {
   setup() {
     const scrolled = ref(false);
     const mobileMenuOpen = ref(false);
+    const isDesktop = ref(window.innerWidth > 768);
 
     const handleScroll = () => {
       scrolled.value = window.scrollY > 50;
+    };
+
+    const handleResize = () => {
+      isDesktop.value = window.innerWidth > 768;
     };
 
     const scrollTo = (sectionId) => {
@@ -111,15 +119,18 @@ export default {
 
     onMounted(() => {
       window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleResize);
     });
 
     onUnmounted(() => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     });
 
     return {
       scrolled,
       mobileMenuOpen,
+      isDesktop,
       scrollTo,
     };
   },

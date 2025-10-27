@@ -279,51 +279,6 @@ export default {
   }
 }
 
-/* Responsive Design */
-@media (max-width: 968px) {
-  .collage-item {
-    height: 200px;
-  }
-
-  .collage-track {
-    animation-duration: 60s;
-  }
-}
-
-@media (max-width: 768px) {
-  .highlights {
-    padding: 4rem 1rem;
-  }
-
-  .section__title {
-    margin-bottom: 3rem;
-  }
-
-  .collage-wrapper {
-    gap: 1.5rem;
-  }
-
-  .collage-track {
-    gap: 1.5rem;
-    animation-duration: 50s;
-  }
-
-  .collage-item {
-    height: 160px;
-  }
-}
-
-@media (max-width: 480px) {
-  .collage-item {
-    height: 120px;
-  }
-
-  .collage-track {
-    gap: 1rem;
-    animation-duration: 40s;
-  }
-}
-
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
@@ -401,21 +356,5 @@ export default {
 .modal-fade-enter-from .modal-content,
 .modal-fade-leave-to .modal-content {
   transform: scale(0.9);
-}
-
-@media (max-width: 768px) {
-  .modal-overlay {
-    padding: 1rem;
-  }
-
-  .modal-close {
-    top: -2.5rem;
-    width: 40px;
-    height: 40px;
-  }
-
-  .modal-image {
-    max-height: 85vh;
-  }
 }
 </style>
