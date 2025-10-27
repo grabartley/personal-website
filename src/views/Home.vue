@@ -4,7 +4,7 @@
     <About />
     <ExperienceTimeline />
     <HonoursAwards />
-    <LifeCollage />
+    <Highlights />
     <!-- <ProjectsSection /> -->
     <Contact />
     <Navigation />
@@ -16,8 +16,8 @@ import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
 import ExperienceTimeline from '@/components/ExperienceTimeline.vue';
 import HonoursAwards from '@/components/HonoursAwards.vue';
+import Highlights from '@/components/Highlights.vue';
 // import ProjectsSection from '@/components/ProjectsSection.vue';
-import LifeCollage from '@/components/LifeCollage.vue';
 import Contact from '@/components/Contact.vue';
 import Navigation from '@/components/Navigation.vue';
 
@@ -28,8 +28,8 @@ export default {
     About,
     ExperienceTimeline,
     HonoursAwards,
+    Highlights,
     // ProjectsSection,
-    LifeCollage,
     Contact,
     Navigation,
   },

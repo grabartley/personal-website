@@ -1,9 +1,9 @@
 <template>
   <section
     id="highlights"
-    class="life-collage section"
+    class="highlights section"
   >
-    <div class="life-collage__container">
+    <div class="highlights__container">
       <h2 class="section__title">
         Highlights
       </h2>
@@ -92,7 +92,7 @@
 
 <script>
 export default {
-  name: 'LifeCollage',
+  name: 'Highlights',
   data() {
     return {
       images: [
@@ -104,7 +104,6 @@ export default {
         'pwc-cert.jpg',
         'coderdojo-team-1.jpg',
         'coderdojo-team-2.jpg',
-        'coolest-projects-1.jpg',
         'dts-1.jpg',
         'dts-2.JPG',
         'dts-3.jpg',
@@ -174,13 +173,13 @@ export default {
 </script>
 
 <style scoped>
-.life-collage {
+.highlights {
   padding: 6rem 2rem;
   overflow: hidden;
   position: relative;
 }
 
-.life-collage__container {
+.highlights__container {
   max-width: 100%;
   margin: 0 auto;
 }
@@ -292,7 +291,7 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .life-collage {
+  .highlights {
     padding: 4rem 1rem;
   }
 
