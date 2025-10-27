@@ -1,14 +1,14 @@
 <template>
   <section
-    id="honors"
-    class="honors section"
+    id="honours"
+    class="honours section"
   >
-    <div class="honors__container">
+    <div class="honours__container">
       <h2 class="section__title">
-        Honors & Awards
+        Honours & Awards
       </h2>
       
-      <div class="honors__grid">
+      <div class="honours__grid">
         <div
           v-for="award in awards"
           :key="award.title"
@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  name: 'HonorsAwards',
+  name: 'HonoursAwards',
   data() {
     return {
       awards: [
@@ -92,12 +92,12 @@ export default {
 </script>
 
 <style scoped>
-.honors {
+.honours {
   padding: 6rem 2rem;
   background: var(--bg-secondary);
 }
 
-.honors__container {
+.honours__container {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -113,7 +113,7 @@ export default {
   background-clip: text;
 }
 
-.honors__grid {
+.honours__grid {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -194,7 +194,7 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .honors {
+  .honours {
     padding: 4rem 1rem;
   }
   
