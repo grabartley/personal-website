@@ -21,16 +21,16 @@ export default {
   /* Light theme colors */
   --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --bg-secondary: #f8fafc;
-  --bg-glass: rgba(255, 255, 255, 0.1);
+  --bg-glass: rgba(255, 255, 255, 0.7);
   --text-primary: #1a202c;
   --text-secondary: #4a5568;
   --accent-primary: #6366f1;
   --accent-secondary: #8b5cf6;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --border-color: rgba(99, 102, 241, 0.2);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 30px -5px rgba(0, 0, 0, 0.25);
 }
 
 [data-theme="dark"] {

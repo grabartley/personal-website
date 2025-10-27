@@ -55,7 +55,7 @@ export default {
 }
 
 [data-theme="light"] .hero {
-  background: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #ddd6fe 100%);
 }
 
 .hero__content {
@@ -75,6 +75,10 @@ export default {
   letter-spacing: 0.05em;
 }
 
+[data-theme="light"] .hero__name {
+  color: #1e293b;
+}
+
 .hero__title {
   font-size: clamp(1.2rem, 3vw, 2rem);
   color: rgba(255, 255, 255, 0.9);
@@ -82,10 +86,18 @@ export default {
   margin-bottom: 0.5rem;
 }
 
+[data-theme="light"] .hero__title {
+  color: #334155;
+}
+
 .hero__subtitle {
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
+}
+
+[data-theme="light"] .hero__subtitle {
+  color: #475569;
 }
 
 .hero__gradient {
@@ -146,6 +158,11 @@ export default {
   transform: rotate(45deg);
   animation: bounce 2s infinite;
   transition: all 0.2s ease;
+}
+
+[data-theme="light"] .scroll-arrow {
+  border-right: 3px solid #1e293b;
+  border-bottom: 3px solid #1e293b;
 }
 
 .hero__scroll-indicator:hover .scroll-arrow {

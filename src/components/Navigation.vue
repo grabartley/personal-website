@@ -136,6 +136,11 @@ export default {
   box-shadow: var(--shadow-md);
 }
 
+[data-theme="light"] .nav--scrolled {
+  background: rgba(248, 250, 252, 0.85);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+}
+
 .nav__content {
   max-width: 1200px;
   margin: 0 auto;
@@ -162,10 +167,15 @@ export default {
 }
 
 .nav__links {
+  backdrop-filter: blur(10px);
+  background: var(--bg-glass);
   display: flex;
   list-style: none;
   gap: 2rem;
   align-items: center;
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 20px;
 }
 
 .nav__links li button {
@@ -195,7 +205,7 @@ export default {
   transition: width 0.3s ease;
 }
 
-.nav__links li button:hover::after {
+.nav__links li button:not(.theme-toggle):hover::after {
   width: 100%;
 }
 
