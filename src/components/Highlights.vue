@@ -103,6 +103,7 @@ export default {
       images,
       selectedImage: null,
       isModalOpen: false,
+      imagePreloadPromises: [],
       resizeRaf: null,
     };
   },
@@ -118,6 +119,11 @@ export default {
         shuffled.slice(midpoint),     // Second row
       ];
     },
+  },
+  created() {
+    if (typeof window !== 'undefined') {
+      this.preloadImages();
+    }
   },
   mounted() {
     window.addEventListener('keydown', this.handleKeydown);
@@ -163,10 +169,31 @@ export default {
         this.closeModal();
       }
     },
+    preloadImages() {
+      if (typeof window === 'undefined' || this.imagePreloadPromises.length) {
+        return;
+      }
+
+      this.imagePreloadPromises = this.images.map((image) => new Promise((resolve) => {
+        const img = new Image();
+        const onDone = () => {
+          img.removeEventListener('load', onDone);
+          img.removeEventListener('error', onDone);
+          resolve();
+        };
+        img.addEventListener('load', onDone);
+        img.addEventListener('error', onDone);
+        img.src = image.url;
+      }));
+    },
     waitForImages() {
       const imageEls = Array.from(this.$el.querySelectorAll('.collage-image'));
       if (imageEls.length === 0) {
         return Promise.resolve();
+      }
+
+      if (!this.imagePreloadPromises.length) {
+        this.preloadImages();
       }
 
       const loadPromises = imageEls.map((img) => {
@@ -184,7 +211,8 @@ export default {
         });
       });
 
-      return Promise.all(loadPromises);
+      const preloadPromises = this.imagePreloadPromises || [];
+      return Promise.all([...preloadPromises, ...loadPromises]);
     },
     updateTrackSetWidths() {
       const tracks = this.$el.querySelectorAll('.collage-track');
