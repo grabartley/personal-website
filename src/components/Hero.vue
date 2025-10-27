@@ -11,7 +11,7 @@
         Senior Software Engineer | AI Applications Squad Lead @ Yahoo
       </p>
       <p class="hero__subtitle">
-        1:1 M.Sc. (2024), 1:1 B.Sc. (2018) @ Dublin City University (DCU)
+        M.Sc. (1st) (2024), B.Sc. (1st) (2018) @ Dublin City University (DCU)
       </p>
     </div>
     <button
@@ -43,6 +43,7 @@ export default {
 .hero {
   position: relative;
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
