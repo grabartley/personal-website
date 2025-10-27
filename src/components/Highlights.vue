@@ -16,9 +16,9 @@
           :class="`collage-row--${rowIndex % 2 === 0 ? 'normal' : 'reverse'}`"
         >
           <div class="collage-track">
-            <!-- Duplicate the images 5 times for seamless infinite scroll -->
+            <!-- Duplicate the images 2 times for seamless infinite scroll -->
             <template
-              v-for="duplicateIndex in 5"
+              v-for="duplicateIndex in 2"
               :key="`duplicate-${duplicateIndex}`"
             >
               <div
@@ -29,7 +29,7 @@
               >
                 <img
                   :src="getImagePath(image)"
-                  :alt="`Life and career moment ${imgIndex + 1}`"
+                  :alt="`Highlight ${imgIndex + 1}`"
                   class="collage-image"
                 >
               </div>
@@ -39,7 +39,6 @@
       </div>
     </div>
 
-    <!-- Image Modal -->
     <transition name="modal-fade">
       <div
         v-if="isModalOpen"
@@ -104,6 +103,7 @@ export default {
       images,
       selectedImage: null,
       isModalOpen: false,
+      resizeRaf: null,
     };
   },
   computed: {
@@ -120,11 +120,22 @@ export default {
     },
   },
   mounted() {
-    // Listen for ESC key to close modal
     window.addEventListener('keydown', this.handleKeydown);
+    window.addEventListener('resize', this.handleResize);
+
+    this.$nextTick(() => {
+      this.waitForImages().then(() => {
+        this.updateTrackSetWidths();
+      });
+    });
   },
   beforeUnmount() {
     window.removeEventListener('keydown', this.handleKeydown);
+    window.removeEventListener('resize', this.handleResize);
+    if (this.resizeRaf) {
+      cancelAnimationFrame(this.resizeRaf);
+      this.resizeRaf = null;
+    }
   },
   methods: {
     shuffleArray(array) {
@@ -142,19 +153,74 @@ export default {
     openModal(image) {
       this.selectedImage = image;
       this.isModalOpen = true;
-      // Prevent body scroll when modal is open
-      document.body.style.overflow = 'hidden';
     },
     closeModal() {
       this.isModalOpen = false;
       this.selectedImage = null;
-      // Restore body scroll
-      document.body.style.overflow = '';
     },
     handleKeydown(e) {
       if (e.key === 'Escape' && this.isModalOpen) {
         this.closeModal();
       }
+    },
+    waitForImages() {
+      const imageEls = Array.from(this.$el.querySelectorAll('.collage-image'));
+      if (imageEls.length === 0) {
+        return Promise.resolve();
+      }
+
+      const loadPromises = imageEls.map((img) => {
+        if (img.complete) {
+          return Promise.resolve();
+        }
+        return new Promise((resolve) => {
+          const onDone = () => {
+            img.removeEventListener('load', onDone);
+            img.removeEventListener('error', onDone);
+            resolve();
+          };
+          img.addEventListener('load', onDone);
+          img.addEventListener('error', onDone);
+        });
+      });
+
+      return Promise.all(loadPromises);
+    },
+    updateTrackSetWidths() {
+      const tracks = this.$el.querySelectorAll('.collage-track');
+      tracks.forEach((track) => {
+        const setWidth = this.measureSetWidth(track);
+        if (setWidth > 0) {
+          track.style.setProperty('--set-width', `${setWidth}px`);
+        }
+      });
+    },
+    measureSetWidth(track) {
+      const items = Array.from(track.children);
+      const itemsPerSet = Math.floor(items.length / 2);
+      if (!itemsPerSet) {
+        return 0;
+      }
+
+      let totalWidth = 0;
+      for (let i = 0; i < itemsPerSet; i++) {
+        const item = items[i];
+        const rect = item.getBoundingClientRect();
+        const styles = window.getComputedStyle(item);
+        const marginLeft = parseFloat(styles.marginLeft) || 0;
+        const marginRight = parseFloat(styles.marginRight) || 0;
+        totalWidth += rect.width + marginLeft + marginRight;
+      }
+      return totalWidth;
+    },
+    handleResize() {
+      if (this.resizeRaf) {
+        cancelAnimationFrame(this.resizeRaf);
+      }
+      this.resizeRaf = requestAnimationFrame(() => {
+        this.updateTrackSetWidths();
+        this.resizeRaf = null;
+      });
     },
   },
 };
@@ -212,17 +278,20 @@ export default {
 
 .collage-track {
   display: flex;
-  gap: 2rem;
-  animation: scroll-left 50s linear infinite;
+  --set-width: 50%;
+  --animation-duration: 30s;
+  animation: scroll-left var(--animation-duration) linear infinite;
+  will-change: transform;
 }
 
 .collage-row--reverse .collage-track {
-  animation: scroll-right 50s linear infinite;
+  animation-name: scroll-right;
 }
 
 .collage-item {
   flex: 0 0 auto;
   height: 400px;
+  margin-right: 2rem;
   border-radius: 16px;
   overflow: hidden;
   background: var(--bg-glass);
@@ -254,13 +323,13 @@ export default {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-20%);
+    transform: translateX(calc(-1 * var(--set-width)));
   }
 }
 
 @keyframes scroll-right {
   from {
-    transform: translateX(-20%);
+    transform: translateX(calc(-1 * var(--set-width)));
   }
   to {
     transform: translateX(0);
