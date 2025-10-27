@@ -134,6 +134,11 @@ export default {
   50% { transform: translate(-50%, -50%) scale(2.3) rotate(180deg); }
 }
 
+@keyframes gradient-shift-mobile {
+  0%, 100% { transform: translate(-50%, -50%) scale(1.6) rotate(0deg); }
+  50% { transform: translate(-50%, -50%) scale(2.4) rotate(180deg); }
+}
+
 .hero__scroll-indicator {
   position: absolute;
   bottom: 3rem;
@@ -178,14 +183,18 @@ export default {
 }
 
 @media (max-width: 768px) {
+  .hero__gradient {
+    animation: gradient-shift-mobile 10s ease infinite;
+  }
+
   .hero__name {
     font-size: 2.5rem;
   }
-  
+
   .hero__title {
     font-size: 1.2rem;
   }
-  
+
   .hero__subtitle {
     font-size: 1rem;
   }
