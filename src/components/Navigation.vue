@@ -13,6 +13,11 @@
           </button>
         </li>
         <li>
+          <button @click="scrollTo('press')">
+            Press
+          </button>
+        </li>
+        <li>
           <button @click="scrollTo('experience')">
             Experience
           </button>
@@ -56,6 +61,9 @@
       >
         <button @click="scrollTo('about') && (mobileMenuOpen = false)">
           About
+        </button>
+        <button @click="scrollTo('press') && (mobileMenuOpen = false)">
+          Press
         </button>
         <button @click="scrollTo('experience') && (mobileMenuOpen = false)">
           Experience
