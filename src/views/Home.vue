@@ -2,6 +2,7 @@
   <div class="home">
     <Hero />
     <About />
+    <PressFeature />
     <ExperienceTimeline />
     <HonoursAwards />
     <!-- <ProjectsSection /> -->
@@ -13,6 +14,7 @@
 <script>
 import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
+import PressFeature from '@/components/PressFeature.vue';
 import ExperienceTimeline from '@/components/ExperienceTimeline.vue';
 import HonoursAwards from '@/components/HonoursAwards.vue';
 // import ProjectsSection from '@/components/ProjectsSection.vue';
@@ -24,6 +26,7 @@ export default {
   components: {
     Hero,
     About,
+    PressFeature,
     ExperienceTimeline,
     HonoursAwards,
     // ProjectsSection,
