@@ -27,7 +27,7 @@
         </div>
 
         <blockquote class="press__quote">
-          "The best solutions often come from pushing back on the premise, not just optimising within the constraints you're given."
+          "The best engineers I've worked with aren't the ones who know everything. They're the ones who learn quickly and aren't embarrassed to be a beginner at something new."
         </blockquote>
 
         <div class="press__attribution">
