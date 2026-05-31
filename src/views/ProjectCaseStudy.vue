@@ -8,7 +8,7 @@
         </p>
 
         <img
-          :src="bannerSrc"
+          :src="lootLockBanner"
           alt="LootLock branded banner"
           class="case-study__banner"
         >
@@ -112,13 +112,16 @@
 <script>
 import { findProjectBySlug } from '@/data/projects';
 import projectStatuses from '@/data/project-status.json';
+import lootLockBanner from '@/assets/loot-lock-banner.png';
 
 export default {
   name: 'ProjectCaseStudy',
+  data() {
+    return {
+      lootLockBanner,
+    };
+  },
   computed: {
-    bannerSrc() {
-      return `${import.meta.env.BASE_URL}projects/loot-lock-banner.png`;
-    },
     project() {
       return findProjectBySlug(this.$route.params.slug);
     },
