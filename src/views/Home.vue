@@ -5,7 +5,7 @@
     <PressFeature />
     <ExperienceTimeline />
     <HonoursAwards />
-    <!-- <ProjectsSection /> -->
+    <PersonalProjects />
     <Contact />
     <Navigation />
   </div>
@@ -17,7 +17,7 @@ import About from '@/components/About.vue';
 import PressFeature from '@/components/PressFeature.vue';
 import ExperienceTimeline from '@/components/ExperienceTimeline.vue';
 import HonoursAwards from '@/components/HonoursAwards.vue';
-// import ProjectsSection from '@/components/ProjectsSection.vue';
+import PersonalProjects from '@/components/PersonalProjects.vue';
 import Contact from '@/components/Contact.vue';
 import Navigation from '@/components/Navigation.vue';
 
@@ -29,7 +29,7 @@ export default {
     PressFeature,
     ExperienceTimeline,
     HonoursAwards,
-    // ProjectsSection,
+    PersonalProjects,
     Contact,
     Navigation,
   },
@@ -41,4 +41,3 @@ export default {
   width: 100%;
 }
 </style>
-

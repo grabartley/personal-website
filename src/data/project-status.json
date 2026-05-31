@@ -1,0 +1,9 @@
+{
+  "loot-lock": {
+    "platform": "Modrinth",
+    "channel": "In Development",
+    "modrinthUrl": "https://modrinth.com/mod/loot-lock",
+    "githubUrl": "https://github.com/grabartley/minecraft-loot-lock",
+    "latestReleaseUrl": "https://github.com/grabartley/minecraft-loot-lock/releases/latest"
+  }
+}

@@ -50,6 +50,10 @@
             I bring a pragmatic, delivery-focused mindset to solving complex, high-impact problems. 
             I'm particularly interested in how recent advances in AI models can enhance software solutions when used safely and correctly.
           </p>
+
+          <p class="about__intro">
+            Outside of work, I build Minecraft mods and contribute to open source, see Personal Projects below.
+          </p>
         </div>
       </div>
     </div>
@@ -168,4 +172,3 @@ export default {
   }
 }
 </style>
-

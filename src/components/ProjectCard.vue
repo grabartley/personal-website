@@ -1,151 +1,199 @@
 <template>
-  <div
-    class="project-card glass"
-    @click="$emit('open-modal', project)"
-  >
-    <div class="project-card__image-container">
-      <img 
-        :src="project.image" 
-        :alt="project.title"
-        class="project-card__image"
+  <article class="project-card glass">
+    <header class="project-card__header">
+      <span class="project-card__status">{{ statusText }}</span>
+      <span
+        v-if="formattedDownloads"
+        class="project-card__downloads"
+      >{{ formattedDownloads }} downloads</span>
+    </header>
+
+    <h3 class="project-card__title">
+      {{ title }}
+    </h3>
+    <p class="project-card__tagline">
+      {{ tagline }}
+    </p>
+
+    <div class="project-card__summary">
+      <p
+        v-for="paragraph in summary"
+        :key="paragraph"
       >
-    </div>
-    <div class="project-card__content">
-      <h3 class="project-card__title">
-        {{ project.title }}
-      </h3>
-      <p class="project-card__description">
-        {{ project.description }}
+        {{ paragraph }}
       </p>
-      <div class="project-card__tags">
-        <span 
-          v-for="tag in project.tags" 
-          :key="tag"
-          class="project-card__tag"
+    </div>
+
+    <div class="project-card__meta">
+      <h4>Tech Stack</h4>
+      <ul>
+        <li
+          v-for="tech in techStack"
+          :key="tech"
         >
-          {{ tag }}
-        </span>
-      </div>
+          {{ tech }}
+        </li>
+      </ul>
     </div>
-    <div class="project-card__overlay">
-      <span class="project-card__view">View Details →</span>
+
+    <div class="project-card__meta">
+      <h4>Highlights</h4>
+      <ul>
+        <li
+          v-for="highlight in highlights"
+          :key="highlight"
+        >
+          {{ highlight }}
+        </li>
+      </ul>
     </div>
-  </div>
+
+    <nav
+      class="project-card__links"
+      aria-label="Project links"
+    >
+      <a
+        v-for="link in links"
+        :key="`${slug}-${link.label}`"
+        :href="link.url"
+        :target="link.url.startsWith('/') ? undefined : '_blank'"
+        rel="noreferrer nofollow"
+        class="project-card__link"
+      >{{ link.label }}</a>
+    </nav>
+  </article>
 </template>
 
 <script>
 export default {
   name: 'ProjectCard',
   props: {
-    project: {
-      type: Object,
-      required: true,
+    slug: { type: String, required: true },
+    title: { type: String, required: true },
+    tagline: { type: String, required: true },
+    summary: { type: Array, required: true },
+    techStack: { type: Array, required: true },
+    highlights: { type: Array, required: true },
+    links: { type: Array, required: true },
+    status: { type: Object, default: null },
+  },
+  computed: {
+    statusText() {
+      if (!this.status || !this.status.version || !this.status.channel) {
+        return 'In Development';
+      }
+
+      return `Live on ${this.status.platform} · ${this.status.channel} · ${this.status.version}`;
+    },
+    formattedDownloads() {
+      const value = this.status?.downloads;
+      if (typeof value !== 'number') return null;
+      if (value < 1000) return `${value}`;
+      return `${(value / 1000).toFixed(1)}k`;
     },
   },
-  emits: ['open-modal'],
 };
 </script>
 
 <style scoped>
 .project-card {
-  position: relative;
-  background: var(--bg-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color);
+  padding: 2rem;
   border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   animation: fadeIn 0.6s ease-out;
-  animation-fill-mode: both;
-  box-shadow: var(--shadow-md);
 }
 
 .project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-6px);
   border-color: var(--accent-primary);
 }
 
-.project-card:hover .project-card__overlay {
-  opacity: 1;
-}
-
-.project-card__image-container {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
+.project-card__header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
 }
 
-.project-card__image {
-  width: 80%;
-  height: 80%;
-  object-fit: scale-down;
-  transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-card__image {
-  transform: scale(1.1);
-}
-
-.project-card__content {
-  padding: 1.5rem;
+.project-card__status,
+.project-card__downloads {
+  font-size: 0.875rem;
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
 }
 
 .project-card__title {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.75rem;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
-.project-card__description {
-  font-size: 1rem;
+.project-card__tagline {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.project-card__summary {
+  display: grid;
+  gap: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.project-card__summary p {
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 1rem;
 }
 
-.project-card__tags {
+.project-card__meta {
+  margin-bottom: 1.25rem;
+}
+
+.project-card__meta h4 {
+  font-size: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.project-card__meta ul {
+  margin-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.project-card__meta li {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.project-card__links {
   display: flex;
+  gap: 0.75rem;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.project-card__tag {
-  padding: 0.375rem 0.75rem;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-  color: white;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.project-card__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(99, 102, 241, 0.9);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-card__view {
-  color: white;
-  font-size: 1.25rem;
+.project-card__link {
+  text-decoration: none;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  background: var(--bg-glass);
+  padding: 0.5rem 0.85rem;
+  border-radius: 10px;
   font-weight: 600;
 }
-</style>
 
+.project-card__link:hover {
+  border-color: var(--accent-primary);
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    padding: 1.5rem;
+  }
+}
+</style>
