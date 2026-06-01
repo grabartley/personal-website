@@ -25,7 +25,7 @@
       <header class="case-study__header">
         <img
           :src="banner"
-          alt="LootLock — Minecraft mod logo banner"
+          alt="LootLock Minecraft mod logo banner"
           class="case-study__banner"
         >
         <h1 class="case-study__title gradient-text">
@@ -40,23 +40,23 @@
         <section class="case-study__section">
           <h2>The 36-Hour Build</h2>
           <p>
-            LootLock began as an architecture document on a Saturday morning. By Sunday evening it was a public, MIT-licensed Fabric mod available on Modrinth with a complete test suite, automated release pipeline, original branding, and a polished README. This is the story of how it got there &mdash; and what made the velocity possible without compromising on the engineering rigor I'd apply to production work at Yahoo.
+            LootLock began as an architecture document on a Saturday morning. By Sunday evening it was a public, MIT-licensed Fabric mod available on Modrinth with a complete test suite, automated release pipeline, original branding, and a polished README. This is the story of how it got there, and what made the velocity possible without compromising on engineering rigor.
           </p>
           <p>
             The problem LootLock solves is one every Minecraft player has experienced: inventory pollution. When you're clearing grass for a build, you don't want seeds. When you're mining for diamonds, you don't want cobblestone. When you're exploring lush caves, you don't want a backpack full of decorative plants. Existing mods either run client-side (unreliable in multiplayer) or lack the configuration polish needed for a real player audience. LootLock is server-authoritative, supports per-player profiles with allowlist and denylist modes, and provides both an in-game GUI and a complete slash command tree for operator administration.
           </p>
           <p>The development arc broke into four phases, each driven by formalized code review on every pull request:</p>
           <p>
-            <strong>Phase 1 &mdash; Architecture and validation (Saturday morning).</strong> Five proofs of concept validated the riskiest unknowns first: the Mixin injection point for intercepting item pickup, the persistence layer surviving server restarts and corruption, the networking handshake with stale-revision rejection, dedicated server class loading boundaries, and the safest point for the delete-rejected-item path. None of this code shipped to production. All of it eliminated risk before writing the real implementation.
+            <strong>Phase 1: Architecture and validation (Saturday morning).</strong> Five proofs of concept validated the riskiest unknowns first: the Mixin injection point for intercepting item pickup, the persistence layer surviving server restarts and corruption, the networking handshake with stale-revision rejection, dedicated server class loading boundaries, and the safest point for the delete-rejected-item path. None of this code shipped to production. All of it eliminated risk before writing the real implementation.
           </p>
           <p>
-            <strong>Phase 2 &mdash; Core systems and command surface (Saturday afternoon).</strong> The data model, rule engine, server-side pickup interception, persistence, networking layer with optimistic concurrency control, and full slash command tree shipped behind tested boundaries. Conventional-commit PRs were reviewed against a formalized template covering architecture, blockers, should-fixes, dead code, and validation before merge.
+            <strong>Phase 2: Core systems and command surface (Saturday afternoon).</strong> The data model, rule engine, server-side pickup interception, persistence, networking layer with optimistic concurrency control, and full slash command tree shipped behind tested boundaries. Conventional-commit PRs were reviewed against a formalized template covering architecture, blockers, should-fixes, dead code, and validation before merge.
           </p>
           <p>
-            <strong>Phase 3 &mdash; Client experience and policy enforcement (Sunday).</strong> The Minecraft GUI surfaced everything the commands could do &mdash; main screen, profile list, rule list with search and pagination, item search with full item registry browsing, settings, ModMenu integration. Keybinds shipped unbound by default to avoid conflicts. The rejected-item delete mode landed with multi-layer policy enforcement: server policy persisted to disk, propagated via sync packet to the client, gated at command entry, evaluated again at pickup time as defense-in-depth, and surfaced in the UI with destructive-action confirmation flows.
+            <strong>Phase 3: Client experience and policy enforcement (Sunday).</strong> The Minecraft GUI surfaced everything the commands could do: main screen, profile list, rule list with search and pagination, item search with full item registry browsing, settings, ModMenu integration. Keybinds shipped unbound by default to avoid conflicts. The rejected-item delete mode landed with multi-layer policy enforcement: server policy persisted to disk, propagated via sync packet to the client, gated at command entry, evaluated again at pickup time as defense-in-depth, and surfaced in the UI with destructive-action confirmation flows.
           </p>
           <p>
-            <strong>Phase 4 &mdash; Release engineering (Sunday evening).</strong> README rewrite with command tables and architecture overview, CONTRIBUTING.md, MIT LICENSE properly attributed, fabric.mod.json polished with pinned dependencies, branding designed and integrated, GitHub repository made public with branch protection and CODEOWNERS, automated CI/CD publishing tagged GitHub Releases on every merge to main, and the Modrinth listing submitted with proper Alpha release-channel discipline.
+            <strong>Phase 4: Release engineering (Sunday evening).</strong> README rewrite with command tables and architecture overview, CONTRIBUTING.md, MIT LICENSE properly attributed, fabric.mod.json polished with pinned dependencies, branding designed and integrated, GitHub repository made public with branch protection and CODEOWNERS, automated CI/CD publishing tagged GitHub Releases on every merge to main, and the Modrinth listing submitted with proper Alpha release-channel discipline.
           </p>
         </section>
 
@@ -68,7 +68,7 @@
           </p>
 
           <p>
-            <strong>Side-safe code separation enforced at build time.</strong> Fabric mods must keep client-only code (rendering, GUI, keybinds) out of the server-side classpath or dedicated servers will crash with NoClassDefFoundError on startup. LootLock enforces this with a custom Gradle task, <code>verifyMainSourceSideSafety</code>, that fails CI if <code>src/main/java</code> references <code>net.minecraft.client.*</code> or the client-only package. The rule isn't trust-based &mdash; it's verified by the build.
+            <strong>Side-safe code separation enforced at build time.</strong> Fabric mods must keep client-only code (rendering, GUI, keybinds) out of the server-side classpath or dedicated servers will crash with NoClassDefFoundError on startup. LootLock enforces this with a custom Gradle task, <code>verifyMainSourceSideSafety</code>, that fails CI if <code>src/main/java</code> references <code>net.minecraft.client.*</code> or the client-only package. The rule isn't trust-based, it's verified by the build.
           </p>
 
           <p>
@@ -87,10 +87,10 @@
         <section class="case-study__section">
           <h2>The Agentic AI Workflow</h2>
           <p>
-            LootLock was developed using an agentic AI workflow with Codex as the primary implementer and a formalized human review loop on every change. This is the same pattern I apply to my Squad Lead work at Yahoo on AI Applications: the AI does the implementation; the senior engineer does the architecture, the review, and the judgment calls that define what "good" means for the system.
+            LootLock was developed using an agentic AI workflow with Codex as the primary implementer and a formalized human review loop on every change. The AI does the implementation; the senior engineer does the architecture, the review, and the judgment calls that define what "good" means for the system.
           </p>
           <p>
-            The loop ran roughly: I'd specify the next change against the architecture document, Codex would implement and open a PR, I'd review against the template, push back on architecture violations or scope creep, request specific changes with rationale, and iterate until the work was ship-quality. When the review caught a regression &mdash; a dead config flag, a stale cache invalidation, a UI rendering bug only visible in dev testing &mdash; the feedback fed directly back into the next iteration.
+            The loop ran roughly: I'd specify the next change against the architecture document, Codex would implement and open a PR, I'd review against the template, push back on architecture violations or scope creep, request specific changes with rationale, and iterate until the work was ship-quality. When the review caught a regression (a dead config flag, a stale cache invalidation, a UI rendering bug only visible in dev testing), the feedback fed directly back into the next iteration.
           </p>
           <p>
             What this proved, for my own conviction more than anyone else's: agentic AI development is not a replacement for senior engineering judgment, it's an accelerator for it. The bottleneck moves from "implementing the code" to "knowing what code should be implemented and what's good enough to ship." The senior engineer is more leveraged, not less needed.
@@ -119,9 +119,9 @@
           </dl>
           <p><strong>Source structure:</strong></p>
           <ul>
-            <li><code>src/main/java</code> &mdash; Server + common code (side-safe, no client imports)</li>
-            <li><code>src/client/java</code> &mdash; Client-only code (GUI, keybinds, ModMenu integration)</li>
-            <li><code>src/test/java</code> &mdash; Unit tests for rule engine, network, persistence, GUI controllers</li>
+            <li><code>src/main/java</code>:Server + common code (side-safe, no client imports)</li>
+            <li><code>src/client/java</code>:Client-only code (GUI, keybinds, ModMenu integration)</li>
+            <li><code>src/test/java</code>:Unit tests for rule engine, network, persistence, GUI controllers</li>
           </ul>
         </section>
 
@@ -140,7 +140,7 @@
             The immediate roadmap focuses on a multiplayer validation suite to surface real-world bugs that unit tests miss, then promotion to Beta release channel on Modrinth once stability is proven, then v1.0.0 stable when feedback confirms the mod is production-ready. Longer-term considerations include tag-based filtering (#minecraft:seeds), import/export of profiles between worlds, and HUD blocked-item summaries.
           </p>
           <p>
-            LootLock is the first of several mods I'm building. The next is <strong>Dogs Unleashed</strong>, a dragon companion mod developed with my girlfriend handling art and animation while I handle code, currently in pre-release development.
+            LootLock is the first of several mods I'm building. The next is <strong>Dogs Unleashed</strong>, a mod adding dog breeds to Minecraft with expanded functionality, developed with my girlfriend handling art and animation while I handle code, currently in pre-release development.
           </p>
         </section>
 
