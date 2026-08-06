@@ -175,27 +175,54 @@ export default {
 }
 
 .project-card__stat-dot {
+  position: relative;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--accent-primary);
   flex-shrink: 0;
-  animation: stat-pulse 2s ease-in-out infinite;
+  animation: stat-blink 1.6s steps(1) infinite;
 }
 
-@keyframes stat-pulse {
+.project-card__stat-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  animation: stat-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes stat-blink {
   0%,
   100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.35;
+    opacity: 0.4;
+  }
+}
+
+@keyframes stat-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .project-card__stat-dot {
     animation: none;
+  }
+
+  .project-card__stat-dot::after {
+    animation: none;
+    opacity: 0;
   }
 }
 

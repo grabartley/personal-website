@@ -49,7 +49,6 @@ export default {
       const all = [
         { value: voicedDialogue?.activeInstalls, label: 'Active RuneLite plugin installs' },
         { value: modrinth?.totalDownloads, label: 'Minecraft mod downloads' },
-        { value: voicedDialogue?.npcsVoiced, label: 'Game characters given AI voices' },
         { value: github?.mergedPrsAllProjects, label: 'Merged pull requests across projects' },
         { value: github?.contributionsLastYear, label: 'GitHub contributions in the past year' },
         { value: github?.yearsOnGitHub, label: 'Years on GitHub' },
@@ -95,8 +94,9 @@ export default {
 }
 
 .numbers-section__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5rem;
 }
 
@@ -106,6 +106,7 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  flex: 0 1 calc((100% - 3rem) / 3);
   padding: 2rem 1.5rem;
   background: var(--bg-glass);
   backdrop-filter: blur(10px);
@@ -151,27 +152,54 @@ export default {
 }
 
 .numbers-section__live-dot {
+  position: relative;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--accent-primary);
   flex-shrink: 0;
-  animation: live-pulse 2s ease-in-out infinite;
+  animation: live-blink 1.6s steps(1) infinite;
 }
 
-@keyframes live-pulse {
+.numbers-section__live-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  animation: live-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes live-blink {
   0%,
   100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.35;
+    opacity: 0.4;
+  }
+}
+
+@keyframes live-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .numbers-section__live-dot {
     animation: none;
+  }
+
+  .numbers-section__live-dot::after {
+    animation: none;
+    opacity: 0;
   }
 }
 
@@ -181,11 +209,11 @@ export default {
   }
 
   .numbers-section__grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
   .numbers-section__tile {
+    flex: 0 1 calc((100% - 1rem) / 2);
     padding: 1.5rem 1rem;
   }
 }
