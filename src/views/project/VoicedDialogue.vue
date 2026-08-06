@@ -32,7 +32,7 @@
           Voiced Dialogue
         </h1>
         <p class="case-study__subtitle">
-          My first RuneLite plugin: real AI voices for over 13,700 Old School RuneScape NPCs, published on the Plugin Hub and actively used by 155 players.
+          My first RuneLite plugin: real AI voices for over 13,700 Old School RuneScape NPCs, published on the Plugin Hub and actively used by more than 150 players.
         </p>
       </header>
 
@@ -59,7 +59,7 @@
             <strong>The pivot.</strong> The RuneLite Plugin Hub has strict rules: plugins must compile under the hub's Java 11 standard build, avoid deprecated client APIs, and stay lean enough to review. Multi-gigabyte native engine bundles were never going to pass. So I killed three working backends and rebuilt the synthesis layer as a cloud-only architecture on Gemini TTS, preserving everything that mattered (emotion, accents, per-NPC casting) while cutting everything the platform could not accept. Deleting working code you are proud of is one of the harder engineering disciplines, and this project demanded it at scale.
           </p>
           <p>
-            <strong>The launch (July 2026).</strong> Before submission I ran a full code quality audit, decomposing the plugin into single-responsibility classes, parameterizing the test suite, and organizing the codebase into feature packages. v0.1.0 went live on the Plugin Hub on July 1st, 2026, after more than 200 pull requests.
+            <strong>The launch (July 2026).</strong> Before submission I ran a full code quality audit, decomposing the plugin into single-responsibility classes, parameterizing the test suite, and organizing the codebase into feature packages. v0.1.0 went live on the Plugin Hub on July 1st, 2026, after more than 100 merged pull requests.
           </p>
         </section>
 
@@ -90,7 +90,7 @@
         <section class="case-study__section">
           <h2>Running a Live Plugin</h2>
           <p>
-            Publishing was the start, not the finish. The plugin currently has 155 active users, and the feedback loop with them drives the roadmap. One player opened an issue saying "I love the plugin, the only reason I cannot really use it for all quests at the moment is the slow loading times." Another added they would "love to see the streaming feature get implemented" and thanked us for the work. That thread became the priority: I instrumented time-to-first-audio-chunk, shared honest measurements in the open, and shipped streaming playback so lines start speaking as audio arrives instead of waiting for the full clip.
+            Publishing was the start, not the finish. The plugin currently has more than 150 active users, and the feedback loop with them drives the roadmap. One player opened an issue saying "I love the plugin, the only reason I cannot really use it for all quests at the moment is the slow loading times." Another added they would "love to see the streaming feature get implemented" and thanked us for the work. That thread became the priority: I instrumented time-to-first-audio-chunk, shared honest measurements in the open, and shipped streaming playback so lines start speaking as audio arrives instead of waiting for the full clip.
           </p>
           <p>
             The community contributes code too. The streaming playback implementation itself came from a community pull request, which I reviewed, benchmarked, and merged, and another contributor has opened a series of feature and hardening PRs that I review with detailed, constructive feedback. Since launch the plugin has shipped four releases and kept pace with the game itself, voicing new quest content like The Blood Moon Rises and the Wyrmscraig island cast within days of their arrival, adding child-appropriate voices for child NPCs, and adding Google AI Studio as a second provider so players can bring their own Gemini API key.
@@ -132,10 +132,10 @@
         <section class="case-study__section">
           <h2>Outcomes</h2>
           <ul>
-            <li>Published on the RuneLite Plugin Hub with 155 active users</li>
+            <li>Published on the RuneLite Plugin Hub with more than 150 active users</li>
             <li>Over 13,700 NPCs voiced, with 6,400+ hand-written character profiles across 13 races and 14 regional origins</li>
             <li>Four releases since launch, with community pull requests merged and player-reported issues shipped as fixes</li>
-            <li>Over 250 pull requests of documented engineering history, open under MIT at grabartley/runelite-voiced-dialogue</li>
+            <li>More than 120 merged pull requests and as many tracked issues of documented engineering history, open under MIT at grabartley/runelite-voiced-dialogue</li>
           </ul>
         </section>
 
