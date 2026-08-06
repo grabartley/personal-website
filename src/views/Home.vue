@@ -23,6 +23,7 @@
               :banner-src="voicedDialogueBanner"
               banner-alt="Voiced Dialogue RuneLite plugin banner"
               cta-label="Read more"
+              :stats="voicedDialogueStats"
             />
           </template>
           <template #slide-1>
@@ -34,11 +35,13 @@
               :banner-src="lootLockBanner"
               banner-alt="LootLock Minecraft mod logo banner"
               cta-label="Read more"
+              :stats="lootLockStats"
             />
           </template>
         </ProjectCarousel>
       </div>
     </section>
+    <ByTheNumbers :stats="liveStats" />
     <Contact />
     <Navigation />
   </div>
@@ -52,10 +55,13 @@ import ExperienceTimeline from '@/components/ExperienceTimeline.vue';
 import HonoursAwards from '@/components/HonoursAwards.vue';
 import ProjectCarousel from '@/components/ProjectCarousel.vue';
 import ProjectCard from '@/components/ProjectCard.vue';
+import ByTheNumbers from '@/components/ByTheNumbers.vue';
 import Contact from '@/components/Contact.vue';
 import Navigation from '@/components/Navigation.vue';
+import { useLiveStats } from '@/composables/useLiveStats';
 import lootLockBanner from '@/assets/projects/loot-lock-banner.png';
 import voicedDialogueBanner from '@/assets/projects/voiced-dialogue-banner.svg';
+import { computed } from 'vue';
 
 export default {
   name: 'Home',
@@ -67,11 +73,38 @@ export default {
     HonoursAwards,
     ProjectCarousel,
     ProjectCard,
+    ByTheNumbers,
     Contact,
     Navigation,
   },
   setup() {
-    return { lootLockBanner, voicedDialogueBanner };
+    const { stats: liveStats } = useLiveStats();
+
+    const voicedDialogueStats = computed(() => {
+      const vd = liveStats.value?.voicedDialogue;
+      if (!vd) return [];
+      return [
+        { value: vd.activeInstalls.toLocaleString('en-US'), label: 'active installs' },
+        { value: vd.latestVersion, label: 'latest release' },
+      ];
+    });
+
+    const lootLockStats = computed(() => {
+      const ll = liveStats.value?.lootLock;
+      if (!ll) return [];
+      return [
+        { value: ll.downloads.toLocaleString('en-US'), label: 'downloads' },
+        { value: ll.latestVersion, label: 'latest release' },
+      ];
+    });
+
+    return {
+      lootLockBanner,
+      voicedDialogueBanner,
+      liveStats,
+      voicedDialogueStats,
+      lootLockStats,
+    };
   },
 };
 </script>

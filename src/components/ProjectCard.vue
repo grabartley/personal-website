@@ -11,6 +11,23 @@
       <h3 class="project-card__title">
         {{ title }}
       </h3>
+      <div
+        v-if="stats.length"
+        class="project-card__stats"
+      >
+        <span
+          v-for="stat in stats"
+          :key="stat.label"
+          class="project-card__stat glass"
+        >
+          <span
+            class="project-card__stat-dot"
+            aria-hidden="true"
+          />
+          <strong>{{ stat.value }}</strong>
+          {{ stat.label }}
+        </span>
+      </div>
       <p class="project-card__tagline">
         {{ tagline }}
       </p>
@@ -72,6 +89,10 @@ export default {
       type: String,
       default: 'Read more',
     },
+    stats: {
+      type: Array,
+      default: () => [],
+    },
   },
 };
 </script>
@@ -125,6 +146,57 @@ export default {
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
+}
+
+.project-card__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.project-card__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.375rem 0.875rem;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.project-card__stat strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.project-card__stat-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  flex-shrink: 0;
+  animation: stat-pulse 2s ease-in-out infinite;
+}
+
+@keyframes stat-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__stat-dot {
+    animation: none;
+  }
 }
 
 .project-card__tagline {
