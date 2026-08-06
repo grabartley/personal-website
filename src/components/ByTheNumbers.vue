@@ -45,13 +45,13 @@ export default {
 
     const tiles = computed(() => {
       if (!props.stats) return [];
-      const { voicedDialogue, lootLock, github } = props.stats;
+      const { voicedDialogue, modrinth, github } = props.stats;
       const all = [
-        { value: voicedDialogue?.activeInstalls, label: 'Plugin Hub active installs' },
-        { value: lootLock?.downloads, label: 'Modrinth downloads' },
-        { value: voicedDialogue?.npcsVoiced, label: 'NPCs voiced' },
-        { value: github?.mergedPrsAllProjects, label: 'Merged pull requests' },
-        { value: github?.contributionsLastYear, label: 'Contributions in the last year' },
+        { value: voicedDialogue?.activeInstalls, label: 'Active RuneLite plugin installs' },
+        { value: modrinth?.totalDownloads, label: 'Minecraft mod downloads' },
+        { value: voicedDialogue?.npcsVoiced, label: 'Game characters given AI voices' },
+        { value: github?.mergedPrsAllProjects, label: 'Merged pull requests across projects' },
+        { value: github?.contributionsLastYear, label: 'GitHub contributions in the past year' },
         { value: github?.yearsOnGitHub, label: 'Years on GitHub' },
       ];
       return all

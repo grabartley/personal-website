@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T22:18:12.332Z",
+  "generatedAt": "2026-08-06T22:24:50.200Z",
   "voicedDialogue": {
     "activeInstalls": 157,
     "latestVersion": "v0.4.0",
@@ -15,6 +15,10 @@
       "1.20.1",
       "1.21.1"
     ]
+  },
+  "modrinth": {
+    "totalDownloads": 161,
+    "projectCount": 2
   },
   "github": {
     "yearsOnGitHub": 10,
