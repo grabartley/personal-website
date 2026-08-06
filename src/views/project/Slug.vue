@@ -8,6 +8,7 @@ import { useRoute } from 'vue-router';
 import NotFound from '@/components/NotFound.vue';
 
 const projectComponents = {
+  'voiced-dialogue': defineAsyncComponent(() => import('@/views/project/VoicedDialogue.vue')),
   'loot-lock': defineAsyncComponent(() => import('@/views/project/LootLock.vue')),
 };
 

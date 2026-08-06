@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2172 724" role="img" aria-label="Voiced Dialogue banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#221a12"/>
+      <stop offset="1" stop-color="#120d08"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.65">
+      <stop offset="0" stop-color="#f5d67b" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#f5d67b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8e3a1"/>
+      <stop offset="0.5" stop-color="#e8bf6a"/>
+      <stop offset="1" stop-color="#b9862f"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0cd7e"/>
+      <stop offset="1" stop-color="#a87b2c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="2172" height="724" fill="url(#bg)"/>
+  <rect width="2172" height="724" fill="url(#glow)"/>
+
+  <rect x="26" y="26" width="2120" height="672" fill="none" stroke="#5a4a32" stroke-width="4" rx="14"/>
+  <rect x="38" y="38" width="2096" height="648" fill="none" stroke="#3a2f20" stroke-width="2" rx="10"/>
+
+  <image x="170" y="200" width="216" height="324" style="image-rendering: pixelated" href="data:image/png;base64,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"/>
+
+  <text x="1220" y="382" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="132" fill="url(#gold)" letter-spacing="2">Voiced Dialogue</text>
+  <text x="1220" y="478" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" fill="#a08d6a" letter-spacing="8">OLD SCHOOL RUNESCAPE, OUT LOUD</text>
+
+  <g stroke="#5a4a32" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M86 130 h56 M86 130 v56"/>
+    <path d="M2086 130 h-56 M2086 130 v56"/>
+    <path d="M86 594 h56 M86 594 v-56"/>
+    <path d="M2086 594 h-56 M2086 594 v-56"/>
+  </g>
+</svg>
