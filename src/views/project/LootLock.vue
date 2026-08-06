@@ -32,31 +32,51 @@
           LootLock
         </h1>
         <p class="case-study__subtitle">
-          A server-authoritative Minecraft mod, architected and shipped to public release in a single weekend.
+          A server-authoritative Minecraft mod, taken from a 36-hour weekend alpha to a stable public release, and upgraded across Minecraft versions.
         </p>
       </header>
 
       <div class="case-study__content">
         <section class="case-study__section">
-          <h2>The 36-Hour Build</h2>
+          <h2>From Weekend Alpha to Stable Release</h2>
           <p>
-            LootLock began as an architecture document on a Saturday morning. By Sunday evening it was a public, MIT-licensed Fabric mod available on Modrinth with a complete test suite, automated release pipeline, original branding, and a polished README. This is the story of how it got there, and what made the velocity possible without compromising on engineering rigor.
+            The problem LootLock solves is one every Minecraft player has experienced: inventory pollution. When you're clearing grass for a build, you don't want seeds. When you're mining for diamonds, you don't want cobblestone. Existing mods either run client-side (unreliable in multiplayer) or lack the configuration polish needed for a real player audience. LootLock is server-authoritative, supports per-player profiles with allowlist and denylist modes, and provides both an in-game GUI and a complete slash command tree for operator administration.
           </p>
           <p>
-            The problem LootLock solves is one every Minecraft player has experienced: inventory pollution. When you're clearing grass for a build, you don't want seeds. When you're mining for diamonds, you don't want cobblestone. When you're exploring lush caves, you don't want a backpack full of decorative plants. Existing mods either run client-side (unreliable in multiplayer) or lack the configuration polish needed for a real player audience. LootLock is server-authoritative, supports per-player profiles with allowlist and denylist modes, and provides both an in-game GUI and a complete slash command tree for operator administration.
+            It shipped its first public alpha 36 hours after the architecture document was written. That sprint is part of the story, but it is the opening chapter, not the whole book. Since then LootLock has hardened through twenty pre-release versions, had its entire GUI redesigned around real play, reached a stable v1.0.0 on Modrinth, and taken a major-version upgrade to Minecraft 1.21.1. This is the arc of shipping fast and then sustaining what you shipped.
           </p>
-          <p>The development arc broke into four phases, each driven by formalized code review on every pull request:</p>
+        </section>
+
+        <section class="case-study__section">
+          <h2>Chapter One: The 36-Hour Alpha</h2>
           <p>
-            <strong>Phase 1: Architecture and validation (Saturday morning).</strong> Five proofs of concept validated the riskiest unknowns first: the Mixin injection point for intercepting item pickup, the persistence layer surviving server restarts and corruption, the networking handshake with stale-revision rejection, dedicated server class loading boundaries, and the safest point for the delete-rejected-item path. None of this code shipped to production. All of it eliminated risk before writing the real implementation.
-          </p>
-          <p>
-            <strong>Phase 2: Core systems and command surface (Saturday afternoon).</strong> The data model, rule engine, server-side pickup interception, persistence, networking layer with optimistic concurrency control, and full slash command tree shipped behind tested boundaries. Conventional-commit PRs were reviewed against a formalized template covering architecture, blockers, should-fixes, dead code, and validation before merge.
-          </p>
-          <p>
-            <strong>Phase 3: Client experience and policy enforcement (Sunday).</strong> The Minecraft GUI surfaced everything the commands could do: main screen, profile list, rule list with search and pagination, item search with full item registry browsing, settings, ModMenu integration. Keybinds shipped unbound by default to avoid conflicts. The rejected-item delete mode landed with multi-layer policy enforcement: server policy persisted to disk, propagated via sync packet to the client, gated at command entry, evaluated again at pickup time as defense-in-depth, and surfaced in the UI with destructive-action confirmation flows.
+            LootLock began as an architecture document on a Saturday morning. By Sunday evening it was a public, MIT-licensed Fabric mod on Modrinth with a complete test suite, automated release pipeline, original branding, and a polished README. The weekend broke into four phases, each driven by formalized code review on every pull request.
           </p>
           <p>
-            <strong>Phase 4: Release engineering (Sunday evening).</strong> README rewrite with command tables and architecture overview, CONTRIBUTING.md, MIT LICENSE properly attributed, fabric.mod.json polished with pinned dependencies, branding designed and integrated, GitHub repository made public with branch protection and CODEOWNERS, automated CI/CD publishing tagged GitHub Releases on every merge to main, and the Modrinth listing submitted with proper Alpha release-channel discipline.
+            Saturday was architecture and core systems. Five throwaway proofs of concept validated the riskiest unknowns first: the Mixin injection point for intercepting item pickup, persistence surviving server restarts and corruption, the networking handshake with stale-revision rejection, dedicated-server class loading boundaries, and the safest point for the delete-rejected-item path. With the risk eliminated, the real implementation followed: data model, rule engine, server-side pickup interception, a networking layer with optimistic concurrency control, and the full slash command tree, all behind tested boundaries.
+          </p>
+          <p>
+            Sunday was client experience and release engineering. The GUI surfaced everything the commands could do, the destructive delete mode landed with multi-layer policy enforcement and confirmation flows, and the day closed with CI/CD publishing tagged GitHub Releases on every merge to main and the Modrinth listing submitted under proper Alpha release-channel discipline.
+          </p>
+        </section>
+
+        <section class="case-study__section">
+          <h2>The Road to 1.0</h2>
+          <p>
+            The alpha was a starting line, not a finish line. On the road to stable, the entire interface was rethought around how players actually play: the legacy standalone screens were deleted in favor of an inventory-docked panel with master controls, drag-to-add rules with drop-flash feedback, an adaptive layout, inline delete confirmation, and a one-shot onboarding toast that introduces the panel on first launch. Redesigning a shipped UI and removing the old one takes more discipline than building the first version, and the mod is far better for it.
+          </p>
+          <p>
+            v1.0.0 also delivered the original roadmap in full: item tags as rule entries so one rule covers a whole family of items, profile share codes with export and import available both by command and through an in-panel paste modal, an operator-targeted player administration command surface, localization through translation keys with a shipped Brazilian Portuguese translation, and permission tightening so regular players can manage their own profiles while destructive policy stays operator-gated. When the version crossed to 1.x in June 2026, the release pipeline's version-aware flagging promoted the release channel to stable automatically, exactly as designed during the weekend build.
+          </p>
+        </section>
+
+        <section class="case-study__section">
+          <h2>Keeping Pace with Minecraft</h2>
+          <p>
+            Stable software still has to move, because the platform underneath it does. v2.0.0 upgraded LootLock to Minecraft 1.21.1, including migrating the entire networking layer to Mojang's new CustomPayload API, a breaking platform change that touched every packet in the mod. Treating a platform upgrade as a major version is semantic versioning applied honestly, and the migration shipped clean.
+          </p>
+          <p>
+            v2.0.1 followed with the kind of fixes that only surface in the real world: relocating every package under a unique namespace to prevent class collisions when LootLock runs alongside hundreds of other mods in a modpack, and publishing versioned jars whose embedded version always matches the release. Maintenance is not glamorous, but it is what separates a demo from a product players can rely on.
           </p>
         </section>
 
@@ -103,7 +123,7 @@
             <dt>Language</dt>
             <dd>Java 17</dd>
             <dt>Runtime</dt>
-            <dd>Fabric Loader 0.19.2+, Fabric API 0.92.9+1.20.1</dd>
+            <dd>Fabric Loader + Fabric API on Minecraft 1.21.1 (v2.x line), with the v1.x line supporting 1.20.1</dd>
             <dt>Build</dt>
             <dd>Gradle with Fabric Loom 1.16-SNAPSHOT, custom verifyMainSourceSideSafety task</dd>
             <dt>Testing</dt>
@@ -111,7 +131,7 @@
             <dt>CI/CD</dt>
             <dd>GitHub Actions with conventional commits, mathieudutour/github-tag-action@v6.2 for semantic versioning, softprops/action-gh-release@v2 for automated releases</dd>
             <dt>Networking</dt>
-            <dd>Fabric ServerPlayNetworking + ClientPlayNetworking with custom packet payloads via Identifier + PacketByteBuf</dd>
+            <dd>Fabric ServerPlayNetworking + ClientPlayNetworking, migrated to Mojang's CustomPayload API in v2.0.0</dd>
             <dt>Persistence</dt>
             <dd>JSON-serialized per-player data with corruption recovery (renames bad files to .broken.&lt;timestamp&gt; and recreates defaults)</dd>
             <dt>Optional integrations</dt>
@@ -128,8 +148,10 @@
         <section class="case-study__section">
           <h2>Outcomes</h2>
           <ul>
-            <li>Public release shipped to Modrinth within 36 hours of concept</li>
-            <li>Full automated release pipeline producing tagged GitHub Releases with auto-generated changelogs</li>
+            <li>Stable release live on Modrinth, grown from a first public alpha shipped within 36 hours of concept</li>
+            <li>Hardened through twenty pre-release versions to v1.0.0, with a full GUI redesign, item tag rules, profile share codes, and localization along the way</li>
+            <li>Upgraded to Minecraft 1.21.1 as v2.x, including a full networking migration to the CustomPayload API</li>
+            <li>Automated release pipeline with semantic versioning, auto-generated changelogs, and automatic stable-channel promotion</li>
             <li>Source code open under MIT License at grabartley/minecraft-loot-lock</li>
           </ul>
         </section>
@@ -137,7 +159,7 @@
         <section class="case-study__section">
           <h2>What's Next</h2>
           <p>
-            The immediate roadmap focuses on a multiplayer validation suite to surface real-world bugs that unit tests miss, then promotion to Beta release channel on Modrinth once stability is proven, then v1.0.0 stable when feedback confirms the mod is production-ready. Longer-term considerations include tag-based filtering (#minecraft:seeds), import/export of profiles between worlds, and HUD blocked-item summaries.
+            The original roadmap has been delivered: tag-based filtering and profile import/export both shipped in v1.0.0, and the mod graduated from Alpha through stable to a major-version platform upgrade. The focus now is sustaining that: tracking new Minecraft versions as they release, and folding in player feedback as the audience grows.
           </p>
           <p>
             LootLock is the first of several mods I'm building. The next is <strong>Dogs Unleashed</strong>, a mod adding dog breeds to Minecraft with expanded functionality, developed with my girlfriend handling art and animation while I handle code, currently in pre-release development.
