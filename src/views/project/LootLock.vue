@@ -43,7 +43,7 @@
             The problem LootLock solves is one every Minecraft player has experienced: inventory pollution. When you're clearing grass for a build, you don't want seeds. When you're mining for diamonds, you don't want cobblestone. Existing mods either run client-side (unreliable in multiplayer) or lack the configuration polish needed for a real player audience. LootLock is server-authoritative, supports per-player profiles with allowlist and denylist modes, and provides both an in-game GUI and a complete slash command tree for operator administration.
           </p>
           <p>
-            It shipped its first public alpha 36 hours after the architecture document was written. That sprint is part of the story, but it is the opening chapter, not the whole book. Since then LootLock has hardened through twenty pre-release versions, had its entire GUI redesigned around real play, reached a stable v1.0.0 on Modrinth, and taken a major-version upgrade to Minecraft 1.21.1. This is the arc of shipping fast and then sustaining what you shipped.
+            It shipped its first public alpha 36 hours after the architecture document was written. That sprint is part of the story, but it is the opening chapter, not the whole book. Since then LootLock has hardened through nearly 80 merged pull requests, had its entire GUI redesigned around real play, reached a stable v1.0.0 on Modrinth, and taken a major-version upgrade to Minecraft 1.21.1. This is the arc of shipping fast and then sustaining what you shipped.
           </p>
         </section>
 
@@ -149,7 +149,7 @@
           <h2>Outcomes</h2>
           <ul>
             <li>Stable release live on Modrinth, grown from a first public alpha shipped within 36 hours of concept</li>
-            <li>Hardened through twenty pre-release versions to v1.0.0, with a full GUI redesign, item tag rules, profile share codes, and localization along the way</li>
+            <li>Hardened through nearly 80 merged pull requests to v1.0.0, with a full GUI redesign, item tag rules, profile share codes, and localization along the way</li>
             <li>Upgraded to Minecraft 1.21.1 as v2.x, including a full networking migration to the CustomPayload API</li>
             <li>Automated release pipeline with semantic versioning, auto-generated changelogs, and automatic stable-channel promotion</li>
             <li>Source code open under MIT License at grabartley/minecraft-loot-lock</li>
