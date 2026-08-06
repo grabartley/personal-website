@@ -33,6 +33,11 @@
           </button>
         </li>
         <li>
+          <button @click="scrollTo('numbers')">
+            Numbers
+          </button>
+        </li>
+        <li>
           <button @click="scrollTo('contact')">
             Contact
           </button>
@@ -73,6 +78,9 @@
         </button>
         <button @click="scrollTo('projects') && (mobileMenuOpen = false)">
           Projects
+        </button>
+        <button @click="scrollTo('numbers') && (mobileMenuOpen = false)">
+          Numbers
         </button>
         <button @click="scrollTo('contact') && (mobileMenuOpen = false)">
           Contact
