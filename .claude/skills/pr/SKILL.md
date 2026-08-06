@@ -23,7 +23,8 @@ description: Create a PR for the personal-website repo using a git worktree bran
 8. Publish the screenshots to the `pr-assets` branch so the PR body can embed them:
    - In a temp directory: clone or init the orphan `pr-assets` branch, add the screenshots under `<branch-name>/`, commit, and push
    - First time (branch missing): `git init -b pr-assets && git remote add origin git@github.com:grabartley/personal-website.git`; afterwards: `git clone --branch pr-assets --single-branch --depth 1`
-   - Embed in the PR body as `![<description>](https://raw.githubusercontent.com/grabartley/personal-website/pr-assets/<branch-name>/<file>.png)`
+   - Embed in the PR body pinned to the commit SHA: `![<description>](https://raw.githubusercontent.com/grabartley/personal-website/<commit-sha>/<branch-name>/<file>.png)`
+   - Never embed branch-path URLs and never amend or force-push when updating screenshots: GitHub's image proxy caches per URL, so updated images only show if the commit SHA (and therefore the URL) changes. Append a new commit, then update the PR body to the new SHA
 9. Create PR: `gh pr create --repo grabartley/personal-website --base master --head <branch-name> --title "<title>" --body "<body>"`
    - Title: short, descriptive, same style as commit message
    - Body: one-liner summary, then "**What's included:**" with bullet points, then "**Screenshots:**" with the embedded pr-assets images
