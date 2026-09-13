@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-09-13T00:01:51.334Z",
+  "voicedDialogue": {
+    "activeInstalls": 163,
+    "latestVersion": "v0.8.0",
+    "mergedPrs": 150,
+    "npcsVoiced": 14103,
+    "characterProfiles": 6447
+  },
+  "lootLock": {
+    "downloads": 82,
+    "latestVersion": "v2.0.1",
+    "mergedPrs": 84,
+    "gameVersions": [
+      "1.20.1",
+      "1.21.1"
+    ]
+  },
+  "modrinth": {
+    "totalDownloads": 371,
+    "projectCount": 2
+  },
+  "github": {
+    "yearsOnGitHub": 10,
+    "contributionsLastYear": 1923,
+    "mergedPrsAllProjects": 422
+  }
+}
