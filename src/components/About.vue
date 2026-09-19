@@ -19,15 +19,14 @@
         
         <div class="about__text">
           <p class="about__intro">
-            I'm a Senior Software Engineer and Squad Lead at 
-            <a
-              href="https://www.yahooinc.com/"
+            {{ aboutIntro.before }}<a
+              v-if="aboutIntro.employer && aboutIntro.employer.url"
+              :href="aboutIntro.employer.url"
               target="_blank"
               rel="noreferrer nofollow"
-            >Yahoo</a>, 
-            delivering scalable, high-performance systems that are core to our advertising platform. 
-            I work across the stack with a focus on backend architecture, distributed systems, 
-            and building reliable, maintainable services in production.
+            >{{ aboutIntro.employer.name }}</a><template v-else-if="aboutIntro.employer">
+              {{ aboutIntro.employer.name }}
+            </template>{{ aboutIntro.after }}
           </p>
           
           <p class="about__intro">
@@ -57,8 +56,15 @@
 </template>
 
 <script>
+import { aboutIntro } from '@/data/employment';
+
 export default {
-  name: 'About'
+  name: 'About',
+  data() {
+    return {
+      aboutIntro,
+    };
+  },
 };
 </script>
 

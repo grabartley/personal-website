@@ -8,7 +8,8 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .js,.vue --fix"
+    "lint": "eslint . --ext .js,.vue --fix",
+    "test": "vitest run"
   },
   "dependencies": {
     "vue": "^3.5.13",
@@ -20,7 +21,8 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-vue": "^9.33.0",
     "lint-staged": "^15.2.11",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "vitest": "^5.0.1"
   },
   "engines": {
     "node": ">= 18.0.0",
