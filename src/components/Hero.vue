@@ -30,10 +30,10 @@ import { headline } from '@/data/employment';
 
 export default {
   name: 'Hero',
-  data() {
-    return {
-      headline,
-    };
+  computed: {
+    headline() {
+      return headline;
+    },
   },
   methods: {
     scrollToAbout() {

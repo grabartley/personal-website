@@ -60,10 +60,10 @@ import { aboutIntro } from '@/data/employment';
 
 export default {
   name: 'About',
-  data() {
-    return {
-      aboutIntro,
-    };
+  computed: {
+    aboutIntro() {
+      return aboutIntro;
+    },
   },
 };
 </script>

@@ -14,6 +14,12 @@ import {
   timeline,
 } from '../employment';
 
+const squadLeadBlurb = {
+  role: 'I\'m a Senior Software Engineer and Squad Lead',
+  employed: ', delivering scalable, high-performance systems that are core to our advertising platform.',
+  past: ', where I delivered scalable, high-performance systems core to their advertising platform.',
+};
+
 const employedRole = {
   type: 'work',
   start: 'Oct 2026',
@@ -21,6 +27,7 @@ const employedRole = {
   headline: 'Staff Software Engineer | Platform Lead',
   organization: 'Acme',
   organizationUrl: 'https://acme.example/',
+  aboutBlurb: squadLeadBlurb,
   description: 'Leading platform work',
 };
 
@@ -32,6 +39,7 @@ const pastRole = {
   headline: 'Senior Software Engineer | AI Applications Squad Lead',
   organization: 'Yahoo',
   organizationUrl: 'https://www.yahooinc.com/',
+  aboutBlurb: squadLeadBlurb,
   description: 'Led a squad',
 };
 
@@ -103,9 +111,10 @@ describe('buildHeadline', () => {
     expect(buildHeadline(employedRole)).toBe('Staff Software Engineer | Platform Lead @ Acme');
   });
 
-  it('falls back to the neutral title when a current role has no headline', () => {
+  it('falls back to a bare title, not the between-roles headline, when a role has no headline', () => {
     const noHeadline = { ...employedRole, headline: undefined };
-    expect(buildHeadline(noHeadline)).toBe('Senior Software Engineer | Technical Lead @ Acme');
+    expect(buildHeadline(noHeadline)).toBe('Senior Software Engineer @ Acme');
+    expect(buildHeadline(noHeadline)).not.toContain('Technical Lead');
   });
 });
 
@@ -138,9 +147,32 @@ describe('buildAboutIntro', () => {
 
   it('drops the employer clause entirely when there is no work history', () => {
     const intro = buildAboutIntro(null, null);
-    expect(intro.before).toBe('I\'m a Senior Software Engineer and Squad Lead.');
+    expect(intro.before).toBe('I\'m a Senior Software Engineer.');
     expect(intro.employer).toBeNull();
     expect(intro.after).toContain('I work across the stack');
+  });
+
+  it('takes its prose from the role, so a new employer never inherits stale copy', () => {
+    const newRole = {
+      ...employedRole,
+      organization: 'Acme',
+      aboutBlurb: {
+        role: 'I\'m a Staff Software Engineer',
+        employed: ', building developer platforms.',
+        past: ', where I built developer platforms.',
+      },
+    };
+    const intro = buildAboutIntro(newRole, newRole);
+    expect(intro.before).toBe('I\'m a Staff Software Engineer at ');
+    expect(intro.after).toContain('building developer platforms');
+    expect(intro.after).not.toContain('advertising platform');
+  });
+
+  it('falls back to neutral prose when a role carries no blurb', () => {
+    const noBlurb = { ...pastRole, aboutBlurb: undefined };
+    const intro = buildAboutIntro(null, noBlurb);
+    expect(intro.before).toBe('I\'m a Senior Software Engineer, most recently at ');
+    expect(intro.after).toBe('. I work across the stack with a focus on backend architecture, distributed systems, and building reliable, maintainable services in production.');
   });
 });
 
@@ -194,6 +226,17 @@ describe('shipped employment data', () => {
   it('keeps the full historic timeline', () => {
     expect(timeline).toHaveLength(employmentEntries.length);
     expect(timeline[timeline.length - 1].title).toBe('(1st) B.Sc. Computer Applications');
+  });
+
+  it('has at most one open-ended work entry, so only one role can read as current', () => {
+    const openRoles = employmentEntries.filter((entry) => entry.type === 'work' && !entry.end);
+    expect(openRoles.length).toBeLessThanOrEqual(1);
+  });
+
+  it('gives every work entry a headline for the hero', () => {
+    employmentEntries
+      .filter((entry) => entry.type === 'work' && !entry.end)
+      .forEach((entry) => expect(entry.headline).toBeTruthy());
   });
 
   it('gives every entry a start date and a type', () => {

@@ -32,10 +32,10 @@ npm run preview
 
 Employment state lives in one file: `src/data/employment.js`. The hero headline, the About Me intro, and the experience timeline are all derived from it, so no component needs editing.
 
-- **Starting a new role:** add a new entry at the top of `entries` with `type: 'work'`, a `start` date, no `end` date, and a `headline` for the hero. The site switches to present-tense copy automatically and the timeline renders the role as `Present`.
+- **Starting a new role:** add a new entry at the top of `entries` with `type: 'work'`, a `start` date, no `end` date, a `headline` for the hero, and an `aboutBlurb`. The site switches to present-tense copy automatically and the timeline renders the role as `Present`.
 - **Leaving a role:** give its entry an `end` date. With no open-ended work entry the site drops every current-employer claim, the hero falls back to the employer-neutral headline, and the About Me intro switches to past tense naming the most recent employer.
 - `organizationUrl` is optional. Without it the employer name renders as plain text instead of a link.
-- The `aboutCopy` block holds the role-specific prose for both tenses. Reword it when the new role's work is not described by the existing sentence.
+- `aboutBlurb` on a work entry holds that role's About Me prose in both tenses, so the copy travels with the role and a previous employer's wording never leaks onto a new one. Omit it and the intro falls back to neutral wording.
 
 Historic sections (honours and awards, press features) are independent of this file and keep their references either way.
 

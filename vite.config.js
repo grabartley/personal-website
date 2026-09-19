@@ -21,5 +21,8 @@ export default defineConfig({
     },
   },
   base: './',
+  test: {
+    include: ['src/**/*.test.js'],
+  },
 });
 

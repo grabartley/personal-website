@@ -1,20 +1,19 @@
-const NEUTRAL_HEADLINE = 'Senior Software Engineer | Technical Lead';
+const BETWEEN_ROLES_HEADLINE = 'Senior Software Engineer | Technical Lead';
+const UNTITLED_ROLE_HEADLINE = 'Senior Software Engineer';
 
 const YAHOO_URL = 'https://www.yahooinc.com/';
-const DCU_URL = 'https://dcu.ie/';
 
 const aboutCopy = {
-  role: 'I\'m a Senior Software Engineer and Squad Lead',
-  employed: {
-    connector: ' at ',
-    trailing: ', delivering scalable, high-performance systems that are core to our advertising platform.',
-  },
-  betweenRoles: {
-    connector: ', most recently at ',
-    trailing: ', where I delivered scalable, high-performance systems core to their advertising platform.',
-  },
-  neutral: '.',
+  employedConnector: ' at ',
+  pastConnector: ', most recently at ',
+  noEmployer: '.',
   closing: ' I work across the stack with a focus on backend architecture, distributed systems, and building reliable, maintainable services in production.',
+};
+
+const DEFAULT_ABOUT_BLURB = {
+  role: 'I\'m a Senior Software Engineer',
+  employed: '.',
+  past: '.',
 };
 
 const entries = [
@@ -26,6 +25,11 @@ const entries = [
     headline: 'Senior Software Engineer | AI Applications Squad Lead',
     organization: 'Yahoo',
     organizationUrl: YAHOO_URL,
+    aboutBlurb: {
+      role: 'I\'m a Senior Software Engineer and Squad Lead',
+      employed: ', delivering scalable, high-performance systems that are core to our advertising platform.',
+      past: ', where I delivered scalable, high-performance systems core to their advertising platform.',
+    },
     description: 'I led a feature squad within Yahoo\'s Ads Engineering division delivering reliable and performant AI application solutions at scale for Yahoo\'s core Ad business',
   },
   {
@@ -44,7 +48,6 @@ const entries = [
     end: '2024',
     title: '(1st) M.Sc. Computing',
     organization: 'Dublin City University',
-    organizationUrl: DCU_URL,
     description: 'First class honours Master\'s degree in Computing with major in Secure Software Engineering. Awarded best M.Sc. Computing Practicum by PwC across all majors (140+ students) in my year. Thesis: The Impact of Verification Feedback on Code Correctness in LLM-Generated Dafny Programs',
   },
   {
@@ -94,7 +97,6 @@ const entries = [
     end: '2018',
     title: '(1st) B.Sc. Computer Applications',
     organization: 'Dublin City University',
-    organizationUrl: DCU_URL,
     description: 'First class honours Bachelor\'s degree in Software Engineering',
   },
 ];
@@ -113,21 +115,22 @@ export function findMostRecentRole(timelineEntries) {
 
 export function buildHeadline(currentRole) {
   if (!currentRole) {
-    return NEUTRAL_HEADLINE;
+    return BETWEEN_ROLES_HEADLINE;
   }
-  return `${currentRole.headline || NEUTRAL_HEADLINE} @ ${currentRole.organization}`;
+  return `${currentRole.headline || UNTITLED_ROLE_HEADLINE} @ ${currentRole.organization}`;
 }
 
 export function buildAboutIntro(currentRole, mostRecentRole) {
   const role = currentRole || mostRecentRole;
+  const blurb = (role && role.aboutBlurb) || DEFAULT_ABOUT_BLURB;
   if (!role) {
-    return { before: aboutCopy.role + aboutCopy.neutral, employer: null, after: aboutCopy.closing };
+    return { before: blurb.role + aboutCopy.noEmployer, employer: null, after: aboutCopy.closing };
   }
-  const tone = currentRole ? aboutCopy.employed : aboutCopy.betweenRoles;
+  const employed = Boolean(currentRole);
   return {
-    before: aboutCopy.role + tone.connector,
+    before: blurb.role + (employed ? aboutCopy.employedConnector : aboutCopy.pastConnector),
     employer: { name: role.organization, url: role.organizationUrl || null },
-    after: tone.trailing + aboutCopy.closing,
+    after: (employed ? blurb.employed : blurb.past) + aboutCopy.closing,
   };
 }
 

@@ -43,10 +43,10 @@ import { timeline } from '@/data/employment';
 
 export default {
   name: 'ExperienceTimeline',
-  data() {
-    return {
-      timelineItems: timeline,
-    };
+  computed: {
+    timelineItems() {
+      return timeline;
+    },
   },
 };
 </script>
