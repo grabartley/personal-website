@@ -39,22 +39,12 @@ Employment state lives in one file: `src/data/employment.js`. The hero headline,
 
 Historic sections (honours and awards, press features) are independent of this file and keep their references either way.
 
-## Testing
-
-``` bash
-# run unit tests
-npm test
-```
-
-Unit tests live alongside the code in `__tests__` directories and cover the employment data derivations.
-
 ## Git Hooks
 
 This project uses Git hooks (configured in `.github/hooks/`) to maintain code quality:
 
 1. **Pre-commit hook** automatically runs on every commit:
    - Runs ESLint to check and fix code quality
-   - Runs the unit tests
    - Builds the project to ensure it compiles successfully
    - Stages any changes from linting fixes
 

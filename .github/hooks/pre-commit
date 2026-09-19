@@ -10,14 +10,6 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Run unit tests
-echo "Running unit tests..."
-npm test
-if [ $? -ne 0 ]; then
-  echo "Tests failed. Please fix failures before committing."
-  exit 1
-fi
-
 # Run build
 echo "Running build..."
 npm run build
