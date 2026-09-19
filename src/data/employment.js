@@ -1,5 +1,4 @@
 const BETWEEN_ROLES_HEADLINE = 'Senior Software Engineer | Technical Lead';
-const UNTITLED_ROLE_HEADLINE = 'Senior Software Engineer';
 
 const YAHOO_URL = 'https://www.yahooinc.com/';
 
@@ -10,11 +9,13 @@ const aboutCopy = {
   closing: ' I work across the stack with a focus on backend architecture, distributed systems, and building reliable, maintainable services in production.',
 };
 
-const DEFAULT_ABOUT_BLURB = {
-  role: 'I\'m a Senior Software Engineer',
-  employed: '.',
-  past: '.',
-};
+function defaultAboutBlurb(role) {
+  return {
+    role: role ? `I'm a ${role.title}` : 'I\'m a software engineer',
+    employed: '.',
+    past: '.',
+  };
+}
 
 const entries = [
   {
@@ -117,12 +118,12 @@ export function buildHeadline(currentRole) {
   if (!currentRole) {
     return BETWEEN_ROLES_HEADLINE;
   }
-  return `${currentRole.headline || UNTITLED_ROLE_HEADLINE} @ ${currentRole.organization}`;
+  return `${currentRole.headline || currentRole.title} @ ${currentRole.organization}`;
 }
 
 export function buildAboutIntro(currentRole, mostRecentRole) {
   const role = currentRole || mostRecentRole;
-  const blurb = (role && role.aboutBlurb) || DEFAULT_ABOUT_BLURB;
+  const blurb = (role && role.aboutBlurb) || defaultAboutBlurb(role);
   if (!role) {
     return { before: blurb.role + aboutCopy.noEmployer, employer: null, after: aboutCopy.closing };
   }

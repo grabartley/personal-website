@@ -54,6 +54,7 @@ This project uses Git hooks (configured in `.github/hooks/`) to maintain code qu
 
 1. **Pre-commit hook** automatically runs on every commit:
    - Runs ESLint to check and fix code quality
+   - Runs the unit tests
    - Builds the project to ensure it compiles successfully
    - Stages any changes from linting fixes
 

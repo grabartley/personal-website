@@ -111,9 +111,9 @@ describe('buildHeadline', () => {
     expect(buildHeadline(employedRole)).toBe('Staff Software Engineer | Platform Lead @ Acme');
   });
 
-  it('falls back to a bare title, not the between-roles headline, when a role has no headline', () => {
+  it('falls back to the role title, not the between-roles headline, when a role has no headline', () => {
     const noHeadline = { ...employedRole, headline: undefined };
-    expect(buildHeadline(noHeadline)).toBe('Senior Software Engineer @ Acme');
+    expect(buildHeadline(noHeadline)).toBe('Staff Software Engineer @ Acme');
     expect(buildHeadline(noHeadline)).not.toContain('Technical Lead');
   });
 });
@@ -147,7 +147,7 @@ describe('buildAboutIntro', () => {
 
   it('drops the employer clause entirely when there is no work history', () => {
     const intro = buildAboutIntro(null, null);
-    expect(intro.before).toBe('I\'m a Senior Software Engineer.');
+    expect(intro.before).toBe('I\'m a software engineer.');
     expect(intro.employer).toBeNull();
     expect(intro.after).toContain('I work across the stack');
   });
@@ -171,7 +171,7 @@ describe('buildAboutIntro', () => {
   it('falls back to neutral prose when a role carries no blurb', () => {
     const noBlurb = { ...pastRole, aboutBlurb: undefined };
     const intro = buildAboutIntro(null, noBlurb);
-    expect(intro.before).toBe('I\'m a Senior Software Engineer, most recently at ');
+    expect(intro.before).toBe('I\'m a Senior Software Engineer (Squad Lead), most recently at ');
     expect(intro.after).toBe('. I work across the stack with a focus on backend architecture, distributed systems, and building reliable, maintainable services in production.');
   });
 });
@@ -226,6 +226,14 @@ describe('shipped employment data', () => {
   it('keeps the full historic timeline', () => {
     expect(timeline).toHaveLength(employmentEntries.length);
     expect(timeline[timeline.length - 1].title).toBe('(1st) B.Sc. Computer Applications');
+  });
+
+  it('lists work entries newest first, which is what role resolution relies on', () => {
+    const starts = employmentEntries
+      .filter((entry) => entry.type === 'work')
+      .map((entry) => Date.parse(`1 ${entry.start}`));
+    const sorted = [...starts].sort((a, b) => b - a);
+    expect(starts).toEqual(sorted);
   });
 
   it('has at most one open-ended work entry, so only one role can read as current', () => {
