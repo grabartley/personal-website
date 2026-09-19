@@ -39,67 +39,14 @@
 </template>
 
 <script>
+import { timeline } from '@/data/employment';
+
 export default {
   name: 'ExperienceTimeline',
-  data() {
-    return {
-      timelineItems: [
-        {
-          period: 'Jan 2024 - Present',
-          title: 'Senior Software Engineer (Squad Lead)',
-          organization: 'Yahoo',
-          description: 'I am currently leading a feature squad within Yahoo\'s Ads Engineering division delivering reliable and performant AI application solutions at scale for Yahoo\'s core Ad business',
-        },
-        {
-          period: 'Apr 2023 - Dec 2023',
-          title: 'Software Dev Engineer II (Technical Lead)',
-          organization: 'Yahoo',
-          description: 'Leading technical initiatives and engineering teams within Yahoo\'s Ads Engineering division',
-        },
-        {
-          period: '2022 - 2024',
-          title: '(1st) M.Sc. Computing',
-          organization: 'Dublin City University',
-          description: 'First class honours Master\'s degree in Computing with major in Secure Software Engineering. Awarded best M.Sc. Computing Practicum by PwC across all majors (140+ students) in my year. Thesis: The Impact of Verification Feedback on Code Correctness in LLM-Generated Dafny Programs',
-        },
-        {
-          period: 'Sep 2021 - Apr 2023',
-          title: 'Software Dev Engineer II',
-          organization: 'Yahoo',
-          description: 'Mid-level full stack development (Company transitioned from Verizon Media to Yahoo)',
-        },
-        {
-          period: 'Aug 2021 - Sep 2021',
-          title: 'Software Dev Engineer II',
-          organization: 'Verizon Media',
-          description: 'Mid-level full stack development',
-        },
-        {
-          period: 'Oct 2019 - Aug 2021',
-          title: 'Software Dev Engineer I',
-          organization: 'Verizon Media',
-          description: 'Junior-level full stack development',
-        },
-        {
-          period: 'Aug 2018 - Sep 2019',
-          title: 'Associate Software Dev Engineer',
-          organization: 'Verizon Media',
-          description: 'Entry-level full stack development. First role out of university',
-        },
-        {
-          period: 'Apr 2017 - Sep 2017',
-          title: 'Software Engineering Intern',
-          organization: 'CoderDojo Foundation',
-          description: 'Full stack development of the CoderDojo community platform (Zen)',
-        },
-        {
-          period: '2014 - 2018',
-          title: '(1st) B.Sc. Computer Applications',
-          organization: 'Dublin City University',
-          description: 'First class honours Bachelor\'s degree in Software Engineering',
-        },
-      ],
-    };
+  computed: {
+    timelineItems() {
+      return timeline;
+    },
   },
 };
 </script>
