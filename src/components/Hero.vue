@@ -8,7 +8,7 @@
         Graham Bartley
       </h1>
       <p class="hero__title">
-        Senior Software Engineer | AI Applications Squad Lead @ Yahoo
+        {{ headline }}
       </p>
       <p class="hero__subtitle">
         M.Sc. (1st) (2024), B.Sc. (1st) (2018) @ Dublin City University (DCU)
@@ -26,8 +26,15 @@
 </template>
 
 <script>
+import { headline } from '@/data/employment';
+
 export default {
   name: 'Hero',
+  computed: {
+    headline() {
+      return headline;
+    },
+  },
   methods: {
     scrollToAbout() {
       const aboutSection = document.getElementById('about');
