@@ -49,8 +49,7 @@ import { useLiveStats } from '@/composables/useLiveStats';
 import voicedDialogueBanner from '@/assets/projects/voiced-dialogue-banner.svg';
 import { computed } from 'vue';
 
-const voicedDialogueHighlights = [
-  'A voice for every NPC, matched to its race, gender, age and accent, with hand-written profiles for over 6,400 named characters.',
+const voicedDialogueOtherHighlights = [
   'Accents that fit the lore for 18 races and 14 regions, and emotion read from the speaker\'s chat-head.',
   'An NPC Voices side panel to change any NPC\'s accent, style or pace, with import and export to share your setup.',
   'Your own character speaks too, with an optional narrator, examine text, and background chatter from nearby NPCs.',
@@ -87,6 +86,15 @@ export default {
         { value: vd.activeInstalls.toLocaleString('en-US'), label: 'active installs' },
         { value: vd.npcsVoiced.toLocaleString('en-US'), label: 'NPCs voiced' },
         { value: vd.latestVersion, label: 'latest release' },
+      ];
+    });
+
+    const voicedDialogueHighlights = computed(() => {
+      const profiles = liveStats.value?.voicedDialogue?.characterProfiles;
+      const profileCount = profiles ? profiles.toLocaleString('en-US') : 'over 6,400';
+      return [
+        `A voice for every NPC, matched to its race, gender, age and accent, with hand-written profiles for ${profileCount} named characters.`,
+        ...voicedDialogueOtherHighlights,
       ];
     });
 

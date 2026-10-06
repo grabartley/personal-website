@@ -102,7 +102,6 @@ const stats = {
   voicedDialogue: {
     activeInstalls,
     latestVersion: vdLatestRelease,
-    mergedPrs: vdMergedPrs,
     npcsVoiced: Object.keys(npcVoices.npcs).length,
     characterProfiles,
   },
