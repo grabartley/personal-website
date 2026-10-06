@@ -13,29 +13,16 @@
         <h2 class="projects-section__title">
           Projects
         </h2>
-        <ProjectCarousel :slide-count="2">
+        <ProjectCarousel :slide-count="1">
           <template #slide-0>
             <ProjectCard
-              slug="voiced-dialogue"
               title="Voiced Dialogue"
-              tagline="A RuneLite plugin that gives Old School RuneScape's silent dialogue real AI voices, with emotion, accents, and hand-written personalities for over 6,400 characters."
-              proof-point="Published on the RuneLite Plugin Hub with more than 150 active users, voicing over 13,700 NPCs, with community pull requests merged and player-reported issues shipped as fixes."
+              tagline="A RuneLite plugin that reads Old School RuneScape's dialogue out loud as you play, giving every NPC a voice that fits who they are."
+              :highlights="voicedDialogueHighlights"
+              :links="voicedDialogueLinks"
               :banner-src="voicedDialogueBanner"
               banner-alt="Voiced Dialogue RuneLite plugin banner"
-              cta-label="Read more"
               :stats="voicedDialogueStats"
-            />
-          </template>
-          <template #slide-1>
-            <ProjectCard
-              slug="loot-lock"
-              title="LootLock"
-              tagline="A server-authoritative Minecraft mod for per-player item pickup filtering, taken from weekend alpha to stable public release."
-              proof-point="Shipped to Modrinth as an alpha in 36 hours, hardened through nearly 80 merged pull requests to a stable 1.0, then upgraded to Minecraft 1.21.1 with a major networking migration."
-              :banner-src="lootLockBanner"
-              banner-alt="LootLock Minecraft mod logo banner"
-              cta-label="Read more"
-              :stats="lootLockStats"
             />
           </template>
         </ProjectCarousel>
@@ -59,9 +46,21 @@ import ByTheNumbers from '@/components/ByTheNumbers.vue';
 import Contact from '@/components/Contact.vue';
 import Navigation from '@/components/Navigation.vue';
 import { useLiveStats } from '@/composables/useLiveStats';
-import lootLockBanner from '@/assets/projects/loot-lock-banner.png';
 import voicedDialogueBanner from '@/assets/projects/voiced-dialogue-banner.svg';
 import { computed } from 'vue';
+
+const voicedDialogueOtherHighlights = [
+  'Accents that fit the lore for 18 races and 14 regions, and emotion read from the speaker\'s chat-head.',
+  'An NPC Voices side panel to change any NPC\'s accent, style or pace, with import and export to share your setup.',
+  'Your own character speaks too, with an optional narrator, examine text, and background chatter from nearby NPCs.',
+  'Dialogue in other languages or speaking styles, from pirate to Shakespeare.',
+  'Uses Gemini text-to-speech through Google AI Studio or OpenRouter, at about $0.001 a line. Lines you have heard replay for free.',
+];
+
+const voicedDialogueLinks = [
+  { label: 'Plugin Hub', href: 'https://runelite.net/plugin-hub/show/voiced-dialogue' },
+  { label: 'Source code', href: 'https://github.com/grabartley/runelite-voiced-dialogue' },
+];
 
 export default {
   name: 'Home',
@@ -85,25 +84,26 @@ export default {
       if (!vd) return [];
       return [
         { value: vd.activeInstalls.toLocaleString('en-US'), label: 'active installs' },
+        { value: vd.npcsVoiced.toLocaleString('en-US'), label: 'NPCs voiced' },
         { value: vd.latestVersion, label: 'latest release' },
       ];
     });
 
-    const lootLockStats = computed(() => {
-      const ll = liveStats.value?.lootLock;
-      if (!ll) return [];
+    const voicedDialogueHighlights = computed(() => {
+      const profiles = liveStats.value?.voicedDialogue?.characterProfiles;
+      const profileCount = profiles ? profiles.toLocaleString('en-US') : 'over 6,400';
       return [
-        { value: ll.downloads.toLocaleString('en-US'), label: 'downloads' },
-        { value: ll.latestVersion, label: 'latest release' },
+        `A voice for every NPC, matched to its race, gender, age and accent, with hand-written profiles for ${profileCount} named characters.`,
+        ...voicedDialogueOtherHighlights,
       ];
     });
 
     return {
-      lootLockBanner,
       voicedDialogueBanner,
+      voicedDialogueHighlights,
+      voicedDialogueLinks,
       liveStats,
       voicedDialogueStats,
-      lootLockStats,
     };
   },
 };

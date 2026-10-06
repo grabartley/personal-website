@@ -31,28 +31,42 @@
       <p class="project-card__tagline">
         {{ tagline }}
       </p>
-      <p class="project-card__proof">
-        {{ proofPoint }}
-      </p>
-      <router-link
-        :to="`/project/${slug}`"
-        class="project-card__cta glass"
+      <ul
+        v-if="highlights.length"
+        class="project-card__highlights"
       >
-        <span>{{ ctaLabel }}</span>
-        <svg
-          class="project-card__cta-arrow"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+        <li
+          v-for="highlight in highlights"
+          :key="highlight"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"
-          />
-        </svg>
-      </router-link>
+          {{ highlight }}
+        </li>
+      </ul>
+      <div class="project-card__links">
+        <a
+          v-for="link in links"
+          :key="link.href"
+          :href="link.href"
+          target="_blank"
+          rel="noreferrer nofollow"
+          class="project-card__cta glass"
+        >
+          <span>{{ link.label }}</span>
+          <svg
+            class="project-card__cta-arrow"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -61,19 +75,11 @@
 export default {
   name: 'ProjectCard',
   props: {
-    slug: {
-      type: String,
-      required: true,
-    },
     title: {
       type: String,
       required: true,
     },
     tagline: {
-      type: String,
-      required: true,
-    },
-    proofPoint: {
       type: String,
       required: true,
     },
@@ -85,9 +91,13 @@ export default {
       type: String,
       required: true,
     },
-    ctaLabel: {
-      type: String,
-      default: 'Read more',
+    highlights: {
+      type: Array,
+      default: () => [],
+    },
+    links: {
+      type: Array,
+      required: true,
     },
     stats: {
       type: Array,
@@ -233,10 +243,25 @@ export default {
   font-style: italic;
 }
 
-.project-card__proof {
+.project-card__highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
   font-size: 0.9375rem;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.6;
+}
+
+.project-card__highlights li::marker {
+  color: var(--accent-primary);
+}
+
+.project-card__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .project-card__cta {
@@ -255,7 +280,6 @@ export default {
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
-  margin-top: 0.5rem;
 }
 
 .project-card__cta:hover {

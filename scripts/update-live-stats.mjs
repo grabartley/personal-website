@@ -65,7 +65,6 @@ const MODRINTH_USER = 'grahambartley';
 const [
   pluginHub,
   modrinthProjects,
-  modrinthVersions,
   githubUser,
   npcVoices,
   profiles,
@@ -78,7 +77,6 @@ const [
 ] = await Promise.all([
   getJson('https://api.runelite.net/pluginhub'),
   getJson(`https://api.modrinth.com/v2/user/${MODRINTH_USER}/projects`),
-  getJson('https://api.modrinth.com/v2/project/loot-lock/version'),
   getJson(`https://api.github.com/users/${GITHUB_USER}`, githubHeaders()),
   getJson('https://raw.githubusercontent.com/grabartley/runelite-voiced-dialogue/main/src/main/resources/npc-voices.json'),
   getJson('https://raw.githubusercontent.com/grabartley/runelite-voiced-dialogue/main/tools/profiles.json'),
@@ -97,10 +95,6 @@ const yearsOnGitHub = Math.floor(accountAgeMs / (365.25 * 24 * 60 * 60 * 1000));
 
 const characterProfiles = Object.keys(profiles.byId).filter(key => key !== '_comment').length;
 
-const lootLockProject = modrinthProjects.find(project => project.slug === 'loot-lock');
-if (!lootLockProject) {
-  throw new Error('loot-lock missing from Modrinth project list');
-}
 const totalModDownloads = modrinthProjects.reduce((sum, project) => sum + project.downloads, 0);
 
 const stats = {
@@ -108,15 +102,8 @@ const stats = {
   voicedDialogue: {
     activeInstalls,
     latestVersion: vdLatestRelease,
-    mergedPrs: vdMergedPrs,
     npcsVoiced: Object.keys(npcVoices.npcs).length,
     characterProfiles,
-  },
-  lootLock: {
-    downloads: lootLockProject.downloads,
-    latestVersion: `v${modrinthVersions[0].version_number}`,
-    mergedPrs: llMergedPrs,
-    gameVersions: lootLockProject.game_versions,
   },
   modrinth: {
     totalDownloads: totalModDownloads,
