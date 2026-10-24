@@ -2,6 +2,8 @@ const BETWEEN_ROLES_HEADLINE = 'Senior Software Engineer | Technical Lead';
 
 const YAHOO_URL = 'https://www.yahooinc.com/';
 
+const TOAST_MISSION = 'empowering the restaurant community to delight their guests, do what they love, and thrive';
+
 const aboutCopy = {
   employedConnector: ' at ',
   pastConnector: ', most recently at ',
@@ -24,9 +26,8 @@ const entries = [
     organization: 'Toast',
     organizationUrl: 'https://pos.toasttab.com/',
     aboutBlurb: {
-      role: 'I\'m a Staff Software Engineer',
-      employed: ', contributing to its mission of empowering the restaurant community to delight their guests, do what they love, and thrive.',
-      past: ', where I contributed to its mission of empowering the restaurant community to delight their guests, do what they love, and thrive.',
+      employed: `, contributing to its mission of ${TOAST_MISSION}.`,
+      past: `, where I contributed to its mission of ${TOAST_MISSION}.`,
     },
   },
   {
@@ -134,7 +135,7 @@ export function buildHeadline(currentRole) {
 
 export function buildAboutIntro(currentRole, mostRecentRole) {
   const role = currentRole || mostRecentRole;
-  const blurb = (role && role.aboutBlurb) || defaultAboutBlurb(role);
+  const blurb = { ...defaultAboutBlurb(role), ...(role && role.aboutBlurb) };
   if (!role) {
     return { before: blurb.role + aboutCopy.noEmployer, employer: null, after: '' };
   }
