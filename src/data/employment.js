@@ -20,6 +20,13 @@ function defaultAboutBlurb(role) {
 const entries = [
   {
     type: 'work',
+    start: 'Oct 2026',
+    title: 'Staff Software Engineer',
+    organization: 'Toast',
+    organizationUrl: 'https://pos.toasttab.com/',
+  },
+  {
+    type: 'work',
     start: 'Jan 2024',
     end: 'Sep 2026',
     title: 'Senior Software Engineer (Squad Lead)',
