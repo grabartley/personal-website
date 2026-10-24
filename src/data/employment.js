@@ -6,7 +6,6 @@ const aboutCopy = {
   employedConnector: ' at ',
   pastConnector: ', most recently at ',
   noEmployer: '.',
-  closing: ' I work across the stack with a focus on backend architecture, distributed systems, and building reliable, maintainable services in production.',
 };
 
 function defaultAboutBlurb(role) {
@@ -24,6 +23,11 @@ const entries = [
     title: 'Staff Software Engineer',
     organization: 'Toast',
     organizationUrl: 'https://pos.toasttab.com/',
+    aboutBlurb: {
+      role: 'I\'m a Staff Software Engineer',
+      employed: ', contributing to its mission of empowering the restaurant community to delight their guests, do what they love, and thrive.',
+      past: ', where I contributed to its mission of empowering the restaurant community to delight their guests, do what they love, and thrive.',
+    },
   },
   {
     type: 'work',
@@ -132,13 +136,13 @@ export function buildAboutIntro(currentRole, mostRecentRole) {
   const role = currentRole || mostRecentRole;
   const blurb = (role && role.aboutBlurb) || defaultAboutBlurb(role);
   if (!role) {
-    return { before: blurb.role + aboutCopy.noEmployer, employer: null, after: aboutCopy.closing };
+    return { before: blurb.role + aboutCopy.noEmployer, employer: null, after: '' };
   }
   const employed = Boolean(currentRole);
   return {
     before: blurb.role + (employed ? aboutCopy.employedConnector : aboutCopy.pastConnector),
     employer: { name: role.organization, url: role.organizationUrl || null },
-    after: (employed ? blurb.employed : blurb.past) + aboutCopy.closing,
+    after: employed ? blurb.employed : blurb.past,
   };
 }
 
