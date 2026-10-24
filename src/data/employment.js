@@ -2,11 +2,12 @@ const BETWEEN_ROLES_HEADLINE = 'Senior Software Engineer | Technical Lead';
 
 const YAHOO_URL = 'https://www.yahooinc.com/';
 
+const TOAST_MISSION = 'empowering the restaurant community to delight their guests, do what they love, and thrive';
+
 const aboutCopy = {
   employedConnector: ' at ',
   pastConnector: ', most recently at ',
   noEmployer: '.',
-  closing: ' I work across the stack with a focus on backend architecture, distributed systems, and building reliable, maintainable services in production.',
 };
 
 function defaultAboutBlurb(role) {
@@ -18,6 +19,17 @@ function defaultAboutBlurb(role) {
 }
 
 const entries = [
+  {
+    type: 'work',
+    start: 'Oct 2026',
+    title: 'Staff Software Engineer',
+    organization: 'Toast',
+    organizationUrl: 'https://pos.toasttab.com/',
+    aboutBlurb: {
+      employed: `, contributing to its mission of ${TOAST_MISSION}.`,
+      past: `, where I contributed to its mission of ${TOAST_MISSION}.`,
+    },
+  },
   {
     type: 'work',
     start: 'Jan 2024',
@@ -123,15 +135,15 @@ export function buildHeadline(currentRole) {
 
 export function buildAboutIntro(currentRole, mostRecentRole) {
   const role = currentRole || mostRecentRole;
-  const blurb = (role && role.aboutBlurb) || defaultAboutBlurb(role);
+  const blurb = { ...defaultAboutBlurb(role), ...(role && role.aboutBlurb) };
   if (!role) {
-    return { before: blurb.role + aboutCopy.noEmployer, employer: null, after: aboutCopy.closing };
+    return { before: blurb.role + aboutCopy.noEmployer, employer: null, after: '' };
   }
   const employed = Boolean(currentRole);
   return {
     before: blurb.role + (employed ? aboutCopy.employedConnector : aboutCopy.pastConnector),
     employer: { name: role.organization, url: role.organizationUrl || null },
-    after: (employed ? blurb.employed : blurb.past) + aboutCopy.closing,
+    after: employed ? blurb.employed : blurb.past,
   };
 }
 
