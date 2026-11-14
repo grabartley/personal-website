@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-11-14T21:28:27.443Z",
+  "voicedDialogue": {
+    "activeInstalls": 248,
+    "latestVersion": "v1.3.0",
+    "npcsVoiced": 14204,
+    "characterProfiles": 6551
+  },
+  "modrinth": {
+    "totalDownloads": 1116,
+    "projectCount": 2
+  },
+  "github": {
+    "yearsOnGitHub": 10,
+    "contributionsLastYear": 3367,
+    "mergedPrsAllProjects": 620
+  }
+}
